@@ -16,7 +16,7 @@ const getProjects = (locales: ReturnType<typeof useTranslations>): PROJECT[] => 
   {
     title: 'Charted!',
     description: locales('charted_description'),
-    icon: <Image src="/project_logos/Charticon.png" alt="Charted!" width={120} height={120} />,
+    icon: <Image src="/project_logos/ChartIcon.png" alt="Charted!" width={120} height={120} />,
     link: 'https://apps.apple.com/es/app/charted/id1576758403',
   },
   {
