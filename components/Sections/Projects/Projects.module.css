@@ -1,0 +1,113 @@
+.section_title {
+  color: white;
+  font-size: 28px;
+}
+
+.date {
+  font-size: 1rem;
+  color: #606060;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 40px;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.center_title {
+  position: absolute;
+}
+
+.description {
+  font-size: 1rem;
+  white-space: wrap;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.card {
+  display: grid;
+  backdrop-filter: blur(50px);
+  background: var(--purple-gradient);
+  width: 300px;
+  border-radius: 10px;
+  height: 370px;
+  padding: 1rem;
+  color: white;
+  border: 1px solid #989cff;
+  grid-template-rows: 175px 100px 60px;
+  position: relative;
+  background-size: 100% 100%; /* Initial background size */
+  background-position: 0% 50%; /* Initial background position */
+  transition:
+    transform 0.3s ease,
+    background-size 1s ease,
+    background-position 1s ease; /* Smooth transition */
+  animation-play-state: paused; /* Pauses the animation by default */
+}
+
+.card img {
+  object-fit: contain;
+}
+
+.card .link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Hover effect */
+.card:hover {
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  animation-play-state: running; /* Start animation on hover */
+  transform: scale(1.05);
+}
+
+/* Animation for background gradient */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.card_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: flex-start; /* Align icon closer to the top */
+  justify-content: center;
+  height: 40px;
+  margin-top: 30px;
+}
+
+.projects_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.plus_link {
+  position: absolute;
+  top: -29px;
+  right: -32px;
+}

@@ -1,0 +1,78 @@
+{
+    "Welcome": {
+        "subtitle": "Desarrollador de Software Full-Stack"
+    },
+    "Header": {
+        "education": "Educación",
+        "experience": "Experiencia",
+        "projects": "Proyectos",
+        "skills": "Habilidades",
+        "languages": "Idiomas",
+        "contact": "Contacto"
+    },
+    "Education": {
+        "education": "Educación",
+        "ub_title": "Máster Erasmus Mundus en Química Teórica y Computacional - Universitat de Barcelona",
+        "ub_description": "Máster internacional europeo con asignaturas en toda Europa. Fundamentos matemáticos de la mecánica cuántica, análisis y ciencia de datos. Programación de algoritmos numéricos.",
+        "uab_title": "Grado en Química - Universitat Autònoma de Barcelona",
+        "uab_description": "Grado en química: química orgánica, química inorgánica, materiales, técnicas analíticas y química cuántica. Especialización en química computacional."
+    },
+    "Experience": {
+        "experience": "Experiencia",
+        "bsc_title": "Desarrollador Full-Stack en el Barcelona Supercomputing Center",
+        "bsc_description": "Desarrollador de software en el departamento de Ciencias de la Vida. Desarrollo de interfaces gráficas de usuario de escritorio y aplicaciones web para cálculos en HPC, manipulación de datos y visualización molecular.",
+        "ub_researcher": "Investigador en la Universidad de Barcelona",
+        "ub_title": "Investigador en la Universidad de Barcelona",
+        "ub_description": "Investigador en el Instituto de Química Computacional y Teórica. Desarrollo de algoritmos, campos de fuerza y software para realizar simulaciones moleculares."
+    },
+    "Projects": {
+        "projects": "Proyectos",
+        "charted_description": "Crea gráficos de regresión útiles en dispositivos móviles.",
+        "atomic_description": "Visualizador molecular para macOS e iPadOS.",
+        "mc_description": "Simulaciones Monte Carlo para líquidos atómicos.",
+        "yielddb_description": "Plataforma de recolección de datos de expresión proteica.",
+        "nostrum_description": "Ejecuta simulaciones moleculares desde la web.",
+        "horus_description": "Visualizador molecular y gestor de flujos de trabajo para entornos HPC.",
+        "horus_plugin_repo_description": "Un repositorio público para subir plugins de Horus.",
+        "this_portfolio": "Este portafolio",
+        "this_portfolio_description": "Portafolio de Christian Dominguez.",
+        "your_next_project": "Tu próximo proyecto",
+        "your_next_project_description": "Aquí va tu nuevo proyecto."
+    },
+    "Skills": {
+        "skills": "Habilidades",
+        "python_description": "Desarrollo de software científico y backends web con frameworks como Flask, FastAPI, Dash...",
+        "html_description": "Tecnologías fundamentales para construir páginas web e implementar funcionalidades dinámicas en el navegador.",
+        "typescript_description": "Un superset de JavaScript que mejora la fiabilidad del código.",
+        "shell_description": "Scripting y automatización de tareas desde la línea de comandos.",
+        "c_description": "Un lenguaje de programación de bajo nivel para programación de sistemas.",
+        "swift_description": "Un lenguaje moderno y potente para desarrollar aplicaciones iOS y macOS."
+    },
+    "Frameworks": {
+        "frameworks": "Frameworks",
+        "git_description": "Un sistema de control de versiones utilizado para rastrear cambios en el código fuente durante el desarrollo de software.",
+        "mongodb_description": "Una base de datos NoSQL que almacena datos en documentos de tipo JSON.",
+        "react_description": "Una biblioteca de JavaScript popular para construir interfaces de usuario.",
+        "keycloak_description": "Una solución de gestión de identidad y acceso de código abierto.",
+        "fastapi_description": "Un framework web de Python de alto rendimiento para construir APIs.",
+        "flask_description": "Un framework web de Python ligero para construir aplicaciones web.",
+        "vite_description": "Una herramienta de construcción y servidor de desarrollo rápido para proyectos web modernos.",
+        "nextjs_description": "Un framework de React para construir aplicaciones de pila completa.",
+        "nginx_description": "Un servidor web de alto rendimiento y servidor proxy inverso utilizado para balanceo de carga.",
+        "docker_description": "Una plataforma de contenedorización que permite a los desarrolladores empaquetar aplicaciones con todas sus dependencias.",
+        "cicd_description": "Prácticas de Integración Continua y Despliegue Continuo que automatizan el proceso de lanzamiento de software."
+    },
+    "FindMe": {
+        "contact": "Contacto",
+        "find_me": "Contacta"
+    },
+    "Languages": {
+        "languages": "Idiomas",
+        "change_language": "Haz clic para cambiar el idioma de la página"
+    },
+    "Alts": {
+        "college": "Universidad",
+        "company": "Empresa",
+        "learn_more": "Ver más"
+    }
+}

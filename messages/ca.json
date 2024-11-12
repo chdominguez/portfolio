@@ -1,0 +1,78 @@
+{
+    "Welcome": {
+        "subtitle": "Desenvolupador de Programari Full-Stack"
+    },
+    "Header": {
+        "education": "Educació",
+        "experience": "Experiència",
+        "projects": "Projectes",
+        "skills": "Habilitats",
+        "languages": "Idiomes",
+        "contact": "Contacte"
+    },
+    "Education": {
+        "education": "Educació",
+        "ub_title": "Màster Erasmus Mundus en Química Teòrica i Computacional - Universitat de Barcelona",
+        "ub_description": "Màster europeu internacional amb assignatures a l'estranger per tota Europa. Fonaments quàntics matemàtics, anàlisi i ciència de dades. Programació d'algorismes numèrics.",
+        "uab_title": "Grau en Química - Universitat Autònoma de Barcelona",
+        "uab_description": "Grau en química: química orgànica, química inorgànica, materials, tècniques analítiques i química quàntica. Especialització en química computacional."
+    },
+    "Experience": {
+        "experience": "Experiència",
+        "bsc_title": "Desenvolupador Full-Stack al Barcelona Supercomputing Center",
+        "bsc_description": "Desenvolupador de programari al departament de Ciències de la Vida. Desenvolupament d'interfícies gràfiques d'usuari d'escriptori i aplicacions web per a càlculs HPC, manipulació de dades i visualització molecular.",
+        "ub_researcher": "Investigador a la Universitat de Barcelona",
+        "ub_title": "Investigador a la Universitat de Barcelona",
+        "ub_description": "Investigador a l'Institut de Química Computacional i Teòrica. Desenvolupament d'algorismes, camps de forces i programari per a realitzar simulacions moleculars."
+    },
+    "Projects": {
+        "projects": "Projectes",
+        "charted_description": "Crear gràfics de regressió útils en dispositius mòbils.",
+        "atomic_description": "Visualitzador molecular per a macOS i iPadOS.",
+        "mc_description": "Simulacions de Monte Carlo per a líquids atòmics.",
+        "yielddb_description": "Plataforma de recopilació de dades d'expressió de proteïnes.",
+        "nostrum_description": "Executar simulacions moleculars des del web.",
+        "horus_description": "Visualitzador molecular i gestor de fluxos de treball per a entorns HPC.",
+        "horus_plugin_repo_description": "Un repositori públic per pujar Plugins de Horus.",
+        "this_portfolio": "Aquest portfoli",
+        "this_portfolio_description": "El portfoli de Christian Dominguez.",
+        "your_next_project": "El teu proper projecte",
+        "your_next_project_description": "El teu nou projecte aquí."
+    },
+    "Skills": {
+        "skills": "Habilitats",
+        "python_description": "Desenvolupament de programari científic i backends web amb frameworks com Flask, FastAPI, Dash...",
+        "html_description": "Tecnologies bàsiques per a crear pàgines web, dissenys responsius i funcionalitats dinàmiques al navegador.",
+        "typescript_description": "Un superset fortament tipat de JavaScript que millora la fiabilitat del codi.",
+        "shell_description": "Escriptura de scripts i automatització de tasques en línia de comandes.",
+        "c_description": "Un llenguatge de programació de baix nivell per a programació de sistemes.",
+        "swift_description": "Un llenguatge modern i potent per al desenvolupament d'aplicacions per a iOS i macOS."
+    },
+    "Frameworks": {
+        "frameworks": "Frameworks",
+        "git_description": "Un sistema de control de versions utilitzat per a fer un seguiment dels canvis en el codi font durant el desenvolupament de programari.",
+        "mongodb_description": "Una base de dades NoSQL que emmagatzema dades en documents semblants a JSON.",
+        "react_description": "Una biblioteca popular de JavaScript per a la construcció d'interfícies d'usuari.",
+        "keycloak_description": "Una solució de gestió d'identitat i accés de codi obert.",
+        "fastapi_description": "Un framework web Python d'alt rendiment per a la creació d'APIs.",
+        "flask_description": "Un framework lleuger de Python per a la creació d'aplicacions web.",
+        "vite_description": "Una eina de construcció ràpida i servidor de desenvolupament per a projectes web moderns.",
+        "nextjs_description": "Un framework de React per a la creació d'aplicacions full-stack.",
+        "nginx_description": "Un servidor web d'alt rendiment i servidor proxy invers utilitzat per a l'equilibri de càrrega.",
+        "docker_description": "Una plataforma de contenidors que permet als desenvolupadors empaquetar aplicacions amb totes les seves dependències.",
+        "cicd_description": "Pràctiques d'Integració i Desplegament Continu que automatitzen el procés de llançament de programari."
+    },
+    "FindMe": {
+        "contact": "Contacte",
+        "find_me": "Contacta"
+    },
+    "Languages": {
+        "languages": "Idiomes",
+        "change_language": "Fes clic per canviar l'idioma de la pàgina"
+    },
+    "Alts": {
+        "college": "Universitat",
+        "company": "Empresa",
+        "learn_more": "Saber més"
+    }
+}

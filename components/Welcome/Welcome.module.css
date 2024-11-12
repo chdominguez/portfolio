@@ -1,10 +1,16 @@
 .title {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-  font-size: rem(100px);
-  font-weight: 900;
-  letter-spacing: rem(-2px);
+  color: white;
+  font-size: 50px;
+  letter-spacing: 10%;
+  font-family: var(--font-outfit);
+  text-transform: uppercase;
+  font-weight: 50;
+}
 
-  @media (max-width: $mantine-breakpoint-md) {
-    font-size: rem(50px);
-  }
+.subtitle {
+  color: white;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 20%;
+  text-transform: capitalize;
 }

@@ -1,0 +1,78 @@
+{
+    "Welcome": {
+        "subtitle": "全栈软件开发工程师"
+    },
+    "Header": {
+        "education": "教育",
+        "experience": "经验",
+        "projects": "项目",
+        "skills": "技能",
+        "languages": "语言",
+        "contact": "联系"
+    },
+    "Education": {
+        "education": "教育",
+        "ub_title": "理论与计算化学 Erasmus Mundus 硕士 - 巴塞罗那大学",
+        "ub_description": "欧洲国际硕士课程，包括欧洲各地的海外课程。数学量子基础，分析和数据科学。编写数值算法。",
+        "uab_title": "化学学士 - 巴塞罗那自治大学",
+        "uab_description": "化学学士：有机化学、无机化学、材料、分析技术和量子化学。专攻计算化学。"
+    },
+    "Experience": {
+        "experience": "经验",
+        "bsc_title": "全栈开发工程师 - 巴塞罗那超级计算中心",
+        "bsc_description": "生命科学部门的软件开发工程师。为高性能计算（HPC）开发桌面图形用户界面和网络应用程序，用于数据操作和分子可视化。",
+        "ub_researcher": "研究员 - 巴塞罗那大学",
+        "ub_title": "研究员 - 巴塞罗那大学",
+        "ub_description": "理论与计算化学研究所的研究员。开发算法、力场和分子模拟软件。"
+    },
+    "Projects": {
+        "projects": "项目",
+        "charted_description": "在移动设备上创建实用的回归图表。",
+        "atomic_description": "适用于 macOS 和 iPadOS 的分子可视化工具。",
+        "mc_description": "用于原子液体的蒙特卡罗模拟。",
+        "yielddb_description": "蛋白质表达数据收集平台。",
+        "nostrum_description": "从网络运行分子模拟。",
+        "horus_description": "用于 HPC 环境的分子可视化和工作流程管理工具。",
+        "horus_plugin_repo_description": "上传 Horus 插件的公共仓库。",
+        "this_portfolio": "此作品集",
+        "this_portfolio_description": "Christian Dominguez 的作品集。",
+        "your_next_project": "您的下一个项目",
+        "your_next_project_description": "您的全新项目将展示在此。"
+    },
+    "Skills": {
+        "skills": "技能",
+        "python_description": "使用 Flask、FastAPI、Dash 等框架开发科学软件和网络后端。",
+        "html_description": "用于构建网页、创建响应式布局以及实现浏览器动态功能的核心技术。",
+        "typescript_description": "一种 JavaScript 的强类型超集，支持大规模应用开发和提高代码可靠性。",
+        "shell_description": "用于任务脚本和命令行自动化。",
+        "c_description": "一种用于系统编程的低级编程语言。",
+        "swift_description": "一种用于开发 iOS 和 macOS 应用程序的现代强大语言。"
+    },
+    "Frameworks": {
+        "frameworks": "框架",
+        "git_description": "一种版本控制系统，用于在软件开发过程中跟踪源代码的更改。",
+        "mongodb_description": "一种 NoSQL 数据库，以 JSON 类似文档的形式存储数据。",
+        "react_description": "一种用于构建用户界面的流行 JavaScript 库。",
+        "keycloak_description": "一个开源身份和访问管理解决方案。",
+        "fastapi_description": "一个用于构建 API 的高性能 Python 网络框架。",
+        "flask_description": "一个轻量级的 Python 网络框架，用于构建网络应用。",
+        "vite_description": "用于现代网络项目的快速构建工具和开发服务器。",
+        "nextjs_description": "一个用于构建全栈应用的 React 框架。",
+        "nginx_description": "一种用于负载均衡的高性能网络服务器和反向代理服务器。",
+        "docker_description": "一个容器化平台，使开发人员可以将应用程序和所有依赖项打包在一起。",
+        "cicd_description": "自动化软件发布流程的持续集成和持续部署实践。"
+    },
+    "FindMe": {
+        "contact": "联系",
+        "find_me": "找到我"
+    },
+    "Languages": {
+        "languages": "语言",
+        "change_language": "点击切换页面语言"
+    },
+    "Alts": {
+        "college": "大学",
+        "company": "公司",
+        "learn_more": "了解更多"
+    }
+}

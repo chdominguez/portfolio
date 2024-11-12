@@ -1,0 +1,14 @@
+.button {
+  min-width: 150px;
+  border-radius: 10px;
+  background-color: var(--main-white);
+  text-transform: uppercase;
+  color: black;
+  letter-spacing: 0.2rem;
+  transition: all 0.5s ease-in-out;
+  padding-inline: 0.5rem;
+}
+
+.button:hover {
+  background-color: var(--header-color);
+}

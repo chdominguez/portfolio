@@ -1,0 +1,32 @@
+.photo {
+  mix-blend-mode: plus-lighter;
+}
+.find_button {
+  font-size: 30px;
+  font-weight: bold;
+  min-width: 300px;
+  letter-spacing: 5px;
+  text-align: center;
+  background-color: var(--main-white);
+  text-transform: uppercase;
+  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+  color: black;
+  padding-inline: 1rem;
+}
+
+.find_button:hover {
+  background-color: var(--header-color);
+  color: white;
+}
+
+.arrow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  transform: translate(170px, -150px);
+
+  @media (max-width: 1010px) {
+    display: none;
+  }
+}

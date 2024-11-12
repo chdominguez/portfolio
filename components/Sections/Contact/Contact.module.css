@@ -1,0 +1,20 @@
+.contact_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.contact_container a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 110px;
+  height: 110px;
+  color: white;
+}

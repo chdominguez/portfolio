@@ -1,0 +1,78 @@
+{
+    "Welcome": {
+        "subtitle": "Full-Stack Software Developer"
+    },
+    "Header": {
+        "education": "Education",
+        "experience": "Experience",
+        "projects": "Projects",
+        "skills": "Skills",
+        "languages": "Languages",
+        "contact": "Contact"
+    },
+    "Education": {
+        "education": "Education",
+        "ub_title": "Master Erasmus Mundus in Theoretical and Computational Chemistry - Universitat de Barcelona",
+        "ub_description": "European international master with subjects abroad in all Europe. Mathemathical quantum foundations, analisis and data science. Programming numerical algorithms.",
+        "uab_title": "Bachelor in Chemistry - Universitat Autònoma de Barcelona",
+        "uab_description": "Bachelor in chemistry: organic chemistry, inorganic chenistry, materials, analytical techniques and quantum chemistry. Specialization on computational chemistry."
+    },
+    "Experience": {
+        "experience": "Experience",
+        "bsc_title": "Full-Stack Developer At Barcelona Supercomputing Center",
+        "bsc_description": "Software developer in the Life Sciences department. Development desktop graphical user interfaces and web apps for HPC calculations, data manipulation and molecular visualization.",
+        "ub_researcher": "Researcher at University of Barcelona",
+        "ub_title": "Researcher at University of Barcelona",
+        "ub_description": "Researcher at the Insitute of Computational and Theoretical Chemistry. Development of algorithms, force fields and software for running molecular simulations."
+    },
+    "Projects": {
+        "projects": "Projects",
+        "charted_description": "Create useful regression charts on mobile devices.",
+        "atomic_description": "Molecular visualizer for macOS and iPadOS.",
+        "mc_description": "Monte Carlo simulations for atomic liquids.",
+        "yielddb_description": "Protein expression data collection platform.",
+        "nostrum_description": "Run molecular simulations from the web.",
+        "horus_description": "Molecular visualizer and workflow manager for HPC environments.",
+        "horus_plugin_repo_description": "A public repository to upload Horus Plugins.",
+        "this_portfolio": "This portfolio",
+        "this_portfolio_description": "Christian Dominguez's portfolio.",
+        "your_next_project": "Your Next Project",
+        "your_next_project_description": "Your brand new project goes here."
+    },
+    "Skills": {
+        "skills": "Skills",
+        "python_description": "Development of scientific software and web backends with frameworks like Flask, FastAPI, Dash...",
+        "html_description": "Core technologies for building web pages, creating responsive layouts, and implementing dynamic functionality in the browser.",
+        "typescript_description": "A strongly-typed superset of JavaScript that enables large-scale application development and improved code reliability.",
+        "shell_description": "Scripting and command-line automation for tasks.",
+        "c_description": "A low-level programming language for system programming.",
+        "swift_description": "A modern, powerful language for developing iOS and macOS applications."
+    },
+    "Frameworks": {
+        "frameworks": "Frameworks",
+        "git_description": "A version control system used for tracking changes in source code during software development.",
+        "mongodb_description": "A NoSQL database that stores data in JSON-like documents.",
+        "react_description": "A popular JavaScript library for building user interfaces.",
+        "keycloak_description": "An open-source identity and access management solution.",
+        "fastapi_description": "A high-performance Python web framework for building APIs.",
+        "flask_description": "A lightweight Python web framework for building web applications.",
+        "vite_description": "A fast build tool and development server for modern web projects.",
+        "nextjs_description": "A React framework for building full-stack applications.",
+        "nginx_description": "A high-performance web server and reverse proxy server used for load balancing.",
+        "docker_description": "A containerization platform that enables developers to package applications with all dependencies.",
+        "cicd_description": "Continuous Integration and Continuous Deployment practices that automate the software release process."
+    },
+    "FindMe": {
+        "contact": "Contact",
+        "find_me": "Find Me"
+    },
+    "Languages": {
+        "languages": "Languages",
+        "change_language": "Click to change the language of the page"
+    },
+    "Alts": {
+        "college": "University",
+        "company": "Company",
+        "learn_more": "Learn More"
+    }
+}
