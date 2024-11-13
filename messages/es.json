@@ -1,4 +1,8 @@
 {
+    "Mobile": {
+        "title": "Portafolio de Christian Domínguez",
+        "message": "Parece que estás utilizando un dispositivo móvil. Por favor, utiliza un dispositivo de escritorio para una mejor experiencia 😉"
+    },
     "Welcome": {
         "subtitle": "Desarrollador de Software Full-Stack"
     },
@@ -35,7 +39,7 @@
         "horus_description": "Visualizador molecular y gestor de flujos de trabajo para entornos HPC.",
         "horus_plugin_repo_description": "Un repositorio público para subir plugins de Horus.",
         "this_portfolio": "Este portafolio",
-        "this_portfolio_description": "Portafolio de Christian Dominguez.",
+        "this_portfolio_description": "Portafolio de Christian Domínguez.",
         "your_next_project": "Tu próximo proyecto",
         "your_next_project_description": "Aquí va tu nuevo proyecto."
     },

@@ -1,7 +1,7 @@
 body {
   font-family: var(--font-poppins);
   background-color: var(--background-color);
-  display: flex;
+  display: grid;
   justify-content: center;
   margin-inline: 2rem;
   margin-bottom: 2rem;
@@ -47,6 +47,12 @@ body {
 
   @media (max-width: $mantine-breakpoint-md) {
     max-width: 900px;
+    overflow-x: auto; /* Allows horizontal scroll within container */
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: 100vw;
+    padding: 1rem;
     overflow-x: auto; /* Allows horizontal scroll within container */
   }
 }

@@ -62,6 +62,7 @@
   animation: gradient 15s ease infinite;
   animation-play-state: running; /* Start animation on hover */
   background-size: 400% 400%;
+  overflow-x: scroll;
 }
 
 .frameworks_grid {
@@ -101,9 +102,17 @@
   animation: gradient 15s ease infinite;
   animation-play-state: running; /* Start animation on hover */
   background-size: 400% 400%;
+  padding-bottom: 2rem;
 
   @media (max-width: 1000px) {
     max-width: 500px;
     height: auto;
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    max-width: 90vw;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow-y: scroll;
   }
 }

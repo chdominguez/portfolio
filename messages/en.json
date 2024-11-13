@@ -1,4 +1,8 @@
 {
+    "Mobile": {
+        "title": "Christian Domínguez's Portfolio",
+        "message": "Seems that you are using a mobile device. Please, use a desktop device for a better experience 😉"
+    },
     "Welcome": {
         "subtitle": "Full-Stack Software Developer"
     },
@@ -35,7 +39,7 @@
         "horus_description": "Molecular visualizer and workflow manager for HPC environments.",
         "horus_plugin_repo_description": "A public repository to upload Horus Plugins.",
         "this_portfolio": "This portfolio",
-        "this_portfolio_description": "Christian Dominguez's portfolio.",
+        "this_portfolio_description": "Christian Domínguez's portfolio.",
         "your_next_project": "Your Next Project",
         "your_next_project_description": "Your brand new project goes here."
     },

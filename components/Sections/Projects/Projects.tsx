@@ -61,7 +61,7 @@ const getProjects = (locales: ReturnType<typeof useTranslations>): PROJECT[] => 
     icon: (
       <Image src="/project_logos/user.png" alt="Christian Dominguez" width={120} height={120} />
     ),
-    link: 'christiandominguez.info',
+    link: 'https://www.christiandominguez.info',
   },
 ];
 

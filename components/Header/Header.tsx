@@ -64,7 +64,9 @@ export function Header() {
               onClick={toggle}
               color="white"
               style={{
-                transform: 'translateY(-5px)',
+                display: 'grid',
+                placeContent: 'center',
+                width: '100%',
               }}
             />
           </div>

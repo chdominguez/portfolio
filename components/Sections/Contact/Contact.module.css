@@ -18,3 +18,10 @@
   height: 110px;
   color: white;
 }
+
+.contact_container span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-right: 1px;
+}

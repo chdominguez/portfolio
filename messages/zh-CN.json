@@ -1,4 +1,8 @@
 {
+    "Mobile": {
+        "title": "Portfolio de Christian Domínguez",
+        "message": "看起来您使用的是移动设备。请使用台式设备以获得更好的体验 😉"
+    },
     "Welcome": {
         "subtitle": "全栈软件开发工程师"
     },
@@ -35,7 +39,7 @@
         "horus_description": "用于 HPC 环境的分子可视化和工作流程管理工具。",
         "horus_plugin_repo_description": "上传 Horus 插件的公共仓库。",
         "this_portfolio": "此作品集",
-        "this_portfolio_description": "Christian Dominguez 的作品集。",
+        "this_portfolio_description": "Christian Domínguez 的作品集。",
         "your_next_project": "您的下一个项目",
         "your_next_project_description": "您的全新项目将展示在此。"
     },

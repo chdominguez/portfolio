@@ -1,4 +1,8 @@
 {
+    "Mobile": {
+        "title": "Portfoli de Christian Domínguez",
+        "message": "Sembla que has entrat amb un dispositiu mòbil, utilitza un dispositiu d'escriptori per a una millor experiència 😉"
+    },
     "Welcome": {
         "subtitle": "Desenvolupador de Programari Full-Stack"
     },
@@ -35,7 +39,7 @@
         "horus_description": "Visualitzador molecular i gestor de fluxos de treball per a entorns HPC.",
         "horus_plugin_repo_description": "Un repositori públic per pujar Plugins de Horus.",
         "this_portfolio": "Aquest portfoli",
-        "this_portfolio_description": "El portfoli de Christian Dominguez.",
+        "this_portfolio_description": "El portfoli de Christian Domínguez.",
         "your_next_project": "El teu proper projecte",
         "your_next_project_description": "El teu nou projecte aquí."
     },

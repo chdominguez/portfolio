@@ -1,4 +1,8 @@
 {
+    "Mobile": {
+        "title": "Christian Domínguez 的作品集",
+        "message": "Il semble que vous utilisiez un appareil mobile. Veuillez utiliser un appareil de bureau pour une meilleure expérience 😉"
+    },
     "Welcome": {
         "subtitle": "Développeur de software Full-Stack"
     },
@@ -35,7 +39,7 @@
         "horus_description": "Visualiseur moléculaire et gestionnaire de flux de travail pour les environnements HPC.",
         "horus_plugin_repo_description": "Un dépôt public pour télécharger des plugins Horus.",
         "this_portfolio": "Ce portfolio",
-        "this_portfolio_description": "Le portfolio de Christian Dominguez.",
+        "this_portfolio_description": "Le portfolio de Christian Domínguez.",
         "your_next_project": "Votre prochain projet",
         "your_next_project_description": "Votre nouveau projet ici."
     },
