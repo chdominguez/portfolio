@@ -1,6 +1,5 @@
 .button {
   min-width: 150px;
-  max-width: 150px;
   border-radius: 10px;
   background-color: var(--main-white);
   text-transform: uppercase;

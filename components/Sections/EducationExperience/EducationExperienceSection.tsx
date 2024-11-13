@@ -59,7 +59,7 @@ export function Education() {
   const t = useTranslations('Education');
 
   return (
-    <Section sectionName={t('education')} mt={100}>
+    <Section sectionID="Education" sectionName={t('education')} mt={100}>
       <EducationCard
         title={t('ub_title')}
         date="2021-2023"
@@ -80,7 +80,7 @@ export function Education() {
 export function Experience() {
   const t = useTranslations('Experience');
   return (
-    <Section sectionName={t('experience')} mt={0}>
+    <Section sectionID="Experience" sectionName={t('experience')} mt={0}>
       <EducationCard
         title={t('bsc_title')}
         date="2022-Now"

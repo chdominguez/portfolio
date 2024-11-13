@@ -48,7 +48,7 @@ const getSkills = (locales: ReturnType<typeof useTranslations>): SkillType[] => 
 export function Skills() {
   const t = useTranslations('Skills');
   return (
-    <Section sectionName={t('skills')} mt={0}>
+    <Section sectionID="Skills" sectionName={t('skills')} mt={0}>
       <div className={classes.skills_container}>
         {getSkills(t).map((skill) => (
           <SkillView key={skill.title} {...skill} />
@@ -148,7 +148,7 @@ export function Frameworks() {
   const t = useTranslations('Frameworks');
 
   return (
-    <Section sectionName={t('frameworks')} mt={0}>
+    <Section sectionID="Frameworks" sectionName={t('frameworks')} mt={0}>
       <div className={classes.frameworks_grid}>
         {getFrameworks(t).map((skill) => (
           <FrameWorkView key={skill.title} {...skill} />

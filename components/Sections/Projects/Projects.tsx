@@ -76,7 +76,7 @@ export function Projects() {
   const t = useTranslations('Projects');
 
   return (
-    <Section sectionName={t('projects')} mt={0}>
+    <Section sectionID="Projects" sectionName={t('projects')} mt={0}>
       <div className={classes.projects_container}>
         {getProjects(t).map((project) => (
           <ProjectCard key={project.title} {...project} />

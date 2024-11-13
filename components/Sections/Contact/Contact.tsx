@@ -13,7 +13,7 @@ export function Contact() {
   const t = useTranslations('FindMe');
 
   return (
-    <Section sectionName={t('contact')} mt={100}>
+    <Section sectionID="Contact" sectionName={t('contact')} mt={100}>
       <div className={classes.contact_container}>
         <MailContact />
         <LinkedIn />

@@ -41,7 +41,7 @@ export function Languages() {
   const t = useTranslations('Languages');
 
   return (
-    <Section sectionName={t('languages')} mt={0}>
+    <Section sectionID="Languages" sectionName={t('languages')} mt={0}>
       <div className={classes.languages_container}>
         {LANGUAGES.map((language) => (
           <LanguageView key={language.title} {...language} />
