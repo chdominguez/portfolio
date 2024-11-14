@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { useTranslations } from 'next-intl';
 import { AppShell, Modal, Stack } from '@mantine/core';
 import { useDisclosure, useIsFirstRender, useMediaQuery } from '@mantine/hooks';
@@ -30,24 +31,27 @@ export default function HomePage() {
   }, [isMobile]);
 
   return (
-    <AppShell>
-      <Header />
-      <AppShell.Main>
-        <Stack gap={50} className="main-container">
-          <Modal opened={opened} onClose={close} title={t('title')} size="sm">
-            <div>{t('message')}</div>
-          </Modal>
-          <Welcome />
-          <Education />
-          <Experience />
-          <Projects />
-          <FindMe />
-          <Skills />
-          <Frameworks />
-          <Languages />
-          <Contact />
-        </Stack>
-      </AppShell.Main>
-    </AppShell>
+    <>
+      <Analytics />
+      <AppShell>
+        <Header />
+        <AppShell.Main>
+          <Stack gap={50} className="main-container">
+            <Modal opened={opened} onClose={close} title={t('title')} size="sm">
+              <div>{t('message')}</div>
+            </Modal>
+            <Welcome />
+            <Education />
+            <Experience />
+            <Projects />
+            <FindMe />
+            <Skills />
+            <Frameworks />
+            <Languages />
+            <Contact />
+          </Stack>
+        </AppShell.Main>
+      </AppShell>
+    </>
   );
 }
