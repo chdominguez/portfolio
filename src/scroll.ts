@@ -47,15 +47,35 @@ export interface Anchor {
   p: number;
 }
 
-const cache = new Map<string, HTMLElement | null>();
+const cache = new Map<string, Anchor | null>();
+
+// Rects only change on scroll, resize or a ScrollTrigger refresh, so measure once per change.
+let dirty = true;
+const markDirty = () => {
+  dirty = true;
+};
+if (typeof window !== 'undefined') {
+  window.addEventListener('scroll', markDirty, { passive: true });
+  window.addEventListener('resize', markDirty);
+  ScrollTrigger.addEventListener('refresh', markDirty);
+}
 
 export function anchor(id: string): Anchor | null {
-  let el = cache.get(id);
-  if (!el || !el.isConnected) {
-    el = document.querySelector<HTMLElement>(`[data-anchor="${id}"]`);
-    cache.set(id, el);
+  if (dirty) {
+    dirty = false;
+    for (const a of cache.values()) if (a) measure(a);
   }
-  if (!el) return null;
-  const rect = el.getBoundingClientRect();
-  return { el, rect, p: (window.innerHeight - rect.top) / (window.innerHeight + rect.height) };
+  let a = cache.get(id);
+  if (!a || !a.el.isConnected) {
+    const el = document.querySelector<HTMLElement>(`[data-anchor="${id}"]`);
+    a = el && measure({ el, rect: el.getBoundingClientRect(), p: 0 });
+    cache.set(id, a);
+  }
+  return a;
+}
+
+function measure(a: Anchor) {
+  a.rect = a.el.getBoundingClientRect();
+  a.p = (window.innerHeight - a.rect.top) / (window.innerHeight + a.rect.height);
+  return a;
 }

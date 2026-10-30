@@ -38,14 +38,15 @@ export function Cluster() {
     g.rotation.set(-0.5, -0.5 + Math.sin(clock.elapsedTime * 0.3) * 0.1, 0);
     const fade = Math.sin(Math.PI * clamp((a.p - 0.1) / 0.8));
     g.scale.setScalar(clamp(fade * 2));
+    g.visible = fade > 0.001; // scale 0 is invisible anyway; lets the stage go idle
     const lit = clamp((a.p - 0.25) / 0.45) * order.length;
-    order.forEach((cell, step) => {
-      const m = nodes.current[cell];
-      if (!m) return;
+    for (let step = 0; step < order.length; step++) {
+      const m = nodes.current[order[step]];
+      if (!m) continue;
       const on = clamp(lit - step);
       (m.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.15 + on * 1.6;
       m.scale.setScalar(0.8 + on * 0.25);
-    });
+    }
   });
 
   return (

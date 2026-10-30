@@ -71,7 +71,8 @@ export function Projectile({
     const b = burst.current;
     b.visible = age > 0 && age < 1;
     if (b.visible) {
-      dirs.forEach((d, i) => {
+      for (let i = 0; i < BURST; i++) {
+        const d = dirs[i];
         const k = age * 3.2;
         dummy.position.set(
           target.x + dir * 0.7 + d.x * k + dir * k * 0.4,
@@ -81,7 +82,7 @@ export function Projectile({
         dummy.scale.setScalar((1 - age) * 0.14);
         dummy.updateMatrix();
         b.setMatrixAt(i, dummy.matrix);
-      });
+      }
       b.instanceMatrix.needsUpdate = true;
     }
   });

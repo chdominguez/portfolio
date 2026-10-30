@@ -26,15 +26,16 @@ export function Snake() {
     const y0 = toWorld(0, a.rect.top + a.rect.height / 2, viewport).y;
     // head runs s=0..1, then keeps going so the tail follows it into the "hole" at s=1
     const h = clamp((a.p - 0.2) / 0.45) * (1 + N * GAP);
-    segs.current.forEach((m, i) => {
-      if (!m) return;
+    for (let i = 0; i < N; i++) {
+      const m = segs.current[i];
+      if (!m) continue;
       const s = h - i * GAP;
       m.visible = s > 0 && s < 1;
-      if (!m.visible) return;
+      if (!m.visible) continue;
       const amp = 0.45 * Math.sin(s * Math.PI);
       m.position.set(lerp(start, end, s), y0 + Math.sin(s * 22 - clock.elapsedTime * 3) * amp, 0.6);
       m.scale.setScalar(i === 0 ? 1.35 : 1 - (i / N) * 0.55);
-    });
+    }
   });
 
   return (

@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useEffect, useRef } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Cluster } from './Cluster';
 import { CodeGlyphs } from './CodeGlyphs';
@@ -30,12 +30,32 @@ function HeroMolecule() {
   return <Molecule ref={g} def={benzene} />;
 }
 
+/** Renders on demand: scroll/resize wake it, and it keeps looping only while an actor is visible. */
+function Pacer() {
+  const invalidate = useThree((s) => s.invalidate);
+  useEffect(() => {
+    const wake = () => invalidate();
+    window.addEventListener('scroll', wake, { passive: true });
+    window.addEventListener('resize', wake);
+    return () => {
+      window.removeEventListener('scroll', wake);
+      window.removeEventListener('resize', wake);
+    };
+  }, [invalidate]);
+  // Mounted last, so this runs after every actor has updated its visibility for the frame.
+  useFrame(({ scene }) => {
+    if (scene.children.some((c) => c.visible && !(c as THREE.Light).isLight)) invalidate();
+  });
+  return null;
+}
+
 /** One fixed, click-through canvas over the whole page; the DOM drives every actor. */
 export default function Stage() {
   return (
     <Canvas
       className="stage"
-      dpr={[1, 1.75]}
+      dpr={[1, isNarrow() ? 1.5 : 1.75]}
+      frameloop="demand"
       camera={{ position: [0, 0, 10], fov: 50 }}
       gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
     >
@@ -48,6 +68,7 @@ export default function Stage() {
       <Snake />
       <CodeGlyphs />
       <Cluster />
+      <Pacer />
     </Canvas>
   );
 }
