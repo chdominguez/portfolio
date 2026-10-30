@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const reducedMotion =
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export const isNarrow = () => window.innerWidth < 760;
+export const isNarrow = () => window.innerWidth <= 760;
 
 /** Smooth scroll synced with the GSAP ticker, plus scroll-triggered reveals. */
 export function initScroll() {

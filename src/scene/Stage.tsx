@@ -14,8 +14,8 @@ function HeroMolecule() {
   useFrame(({ viewport, pointer, clock }) => {
     const k = clamp(window.scrollY / (window.innerHeight * 0.9));
     const pos = toWorld(
-      window.innerWidth * (isNarrow() ? 0.5 : 0.72),
-      window.innerHeight * 0.5,
+      window.innerWidth * (isNarrow() ? 0.5 : window.innerWidth < 1100 ? 0.8 : 0.72),
+      window.innerHeight * (isNarrow() ? 0.86 : 0.5), // phones: park it below the CTAs
       viewport
     );
     g.current.visible = k < 1;
