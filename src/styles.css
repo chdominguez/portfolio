@@ -63,6 +63,22 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
 .step ul { margin-top: 16px; display: grid; gap: 10px; max-width: 36em; }
 .step ul li { padding-left: 18px; position: relative; }
 .step ul li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 8px; height: 1px; background: var(--muted); }
+
+/* steps stack up and stay visible (earlier ones are never replaced); the #code terminal is the exception */
+.chapter:not(.term) .steps { display: grid; gap: 14px; margin-top: 24px; align-content: start; }
+.chapter:not(.term) .step { position: static; transform: translateY(16px); display: grid; grid-template-columns: 7.5rem 1fr; grid-template-areas: 'p h' 'p o' 'u u'; column-gap: 12px; }
+.chapter:not(.term) .step .period { grid-area: p; padding-top: 0.35rem; }
+.chapter:not(.term) .step h3 { grid-area: h; font-size: clamp(18px, 1.6vw, 22px); margin: 0; }
+.chapter:not(.term) .step .org { grid-area: o; font-size: 15px; }
+.chapter:not(.term) .step ul { grid-area: u; margin-top: 6px; gap: 3px; font-size: 14px; line-height: 1.45; max-width: none; }
+.chapter:not(.term) .step.is-active, .chapter:not(.term) .step.is-past { opacity: 1; transform: none; pointer-events: auto; }
+.chapter:not(.term) .step.is-past { opacity: 0.72; }
+.chapter:not(.term) .pin { padding-top: 88px; }
+.chapter:not(.term) h2 { font-size: clamp(44px, 5.6vw, 84px); }
+@media (max-width: 760px), (max-height: 780px) {
+  /* short screens: older steps fold to one line but stay on screen */
+  .chapter:not(.term) .step.is-past ul, .chapter:not(.term) .step.is-past .org { display: none; }
+}
 .bar { position: absolute; left: 0; bottom: 40px; width: 120px; height: 1px; background: var(--line); }
 .bar::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); }
 

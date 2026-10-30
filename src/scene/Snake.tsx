@@ -6,7 +6,7 @@ import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import { world } from '../engine/world';
 import { C } from './palette';
 
-const LENGTH = 3.6;
+const LENGTH = 3.2;
 const TINT: Record<string, THREE.Color> = {
   DarkGreen: new THREE.Color('#2F6B55'),
   LightGreen: C.accent,
@@ -25,6 +25,7 @@ export function Snake() {
   const gltf = useLoader(GLTFLoader, '/models/snake.glb');
   const root = useRef<THREE.Group>(null!);
   const model = useMemo(() => clone(gltf.scene), [gltf]);
+
   const mixer = useMemo(() => new THREE.AnimationMixer(model), [model]);
   // the armature is scaled x100 and the mesh is ~0.03 long, so the model is ~3 units as exported
   const fit = LENGTH / 3;
@@ -54,9 +55,9 @@ export function Snake() {
     mixer.update(dt * 1.2);
     // enters from the right, leaves on the left, weaving a little on the way
     const x = viewport.width / 2 + LENGTH - t * (viewport.width + LENGTH * 2);
-    g.position.set(x, -viewport.height * 0.24 + Math.sin(clock.elapsedTime * 1.3) * 0.12, 0.6);
-    // model lies along its local Y: roll it flat, head toward the direction of travel (left)
-    g.rotation.set(0.25, Math.sin(clock.elapsedTime * 1.7) * 0.15, Math.PI / 2);
+    g.position.set(x, -viewport.height * 0.43, 0.6);
+    // the model rears up by design (forward is +Z): turn it so it moves left, in side profile
+    g.rotation.set(0, -Math.PI / 2 + Math.sin(clock.elapsedTime * 1.7) * 0.12, 0);
     g.scale.setScalar(fit);
   });
 
