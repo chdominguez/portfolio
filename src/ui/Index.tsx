@@ -13,7 +13,10 @@ export function About() {
         <dl>
           <div>
             <dt>Now</dt>
-            <dd>CEO and CTO, Temple Compute. Building Horus, a workflow runtime for HPC.</dd>
+            <dd>
+              CEO and CTO, Temple Compute. Horus, a workflow runtime for HPC, has 100+ users across
+              10+ labs.
+            </dd>
           </div>
           <div>
             <dt>Strongest at</dt>
@@ -29,6 +32,10 @@ export function About() {
           <div>
             <dt>Published</dt>
             <dd>Four journal articles and a preprint, first author on two.</dd>
+          </div>
+          <div>
+            <dt>Open to</dt>
+            <dd>New roles, remote or based in Barcelona.</dd>
           </div>
           <div>
             <dt>Based in</dt>
@@ -49,7 +56,9 @@ export function Work() {
       </h2>
       <a className="lead-project reveal" href={lead.href}>
         <span className="lead-name">{lead.name}</span>
-        <span className="lead-desc">{lead.desc} Open source from Temple Compute.</span>
+        <span className="lead-desc">
+          {lead.desc} 100+ users across 10+ labs. Open source from Temple Compute.
+        </span>
         <span className="mono">{lead.tools.join(', ')}</span>
       </a>
       <ul className="projects">
@@ -127,7 +136,7 @@ export function Contact() {
   return (
     <footer id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title" className="reveal">
-        Let's build something.
+        Open to new roles, remote or in Barcelona.
       </h2>
       <a className="mail reveal" href={`mailto:${profile.email}`}>
         {profile.email}

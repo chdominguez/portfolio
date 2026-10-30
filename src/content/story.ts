@@ -113,7 +113,7 @@ export const chapters: Chapter[] = [
         title: 'CEO and CTO',
         org: 'Temple Compute',
         points: [
-          'Co-founded the company behind Horus, a runtime and orchestration platform for HPC workflows with LLM-assisted scaffolding.',
+          'Co-founded the company behind Horus, a runtime and orchestration platform for HPC workflows with LLM-assisted scaffolding. 100+ users across 10+ labs.',
           'Own technical strategy, investor relations and early hiring. Building horus-runtime and the tc-os backend (FastAPI, PostgreSQL, Redis, MinIO).',
         ],
       },

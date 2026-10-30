@@ -89,7 +89,7 @@ export const projects = [
     name: 'Horus',
     desc: 'Runtime and workflow orchestration for HPC and scientific computing.',
     tools: ['Python', 'FastAPI', 'Redis'],
-    href: 'https://github.com/temple-compute',
+    href: 'https://github.com/temple-compute/horus-runtime',
   },
   {
     name: 'TipTapChat',
@@ -113,7 +113,7 @@ export const projects = [
   },
   {
     name: 'Charted!',
-    desc: 'Create and view regression charts on iOS with interactive touch controls.',
+    desc: 'Create and view regression charts on iOS with interactive touch controls. No longer on the App Store.',
     tools: ['Swift', 'SwiftUI'],
   },
 ];

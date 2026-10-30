@@ -64,8 +64,8 @@ export function App() {
         <header className="hero" id="top">
           <h1 data-in>{profile.tagline}</h1>
           <p data-in>
-            CEO and CTO of Temple Compute. A chemist turned engineer, building workflow software for
-            HPC and bioinformatics.
+            CEO and CTO of Temple Compute. Chemist turned engineer, building HPC workflow software
+            used by 100+ people in 10+ labs.
           </p>
           <div className="cta" data-in>
             <a className="btn primary" href="#work">
