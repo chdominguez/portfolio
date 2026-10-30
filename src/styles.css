@@ -22,6 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
 .lenis, .lenis body { height: auto; }
 
 /* click-through WebGL layer above the content, so molecules can hit the cards */
@@ -30,30 +31,38 @@ a { color: inherit; text-decoration: none; }
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 10;
   display: flex; justify-content: space-between; padding: 18px clamp(16px, 4vw, 48px);
-  font-weight: 700; backdrop-filter: blur(10px); background: linear-gradient(var(--bg), transparent);
+  font-weight: 700; backdrop-filter: blur(10px); background: rgba(7, 8, 13, 0.8);
 }
-.nav span a { margin-left: 24px; font-weight: 500; color: var(--muted); }
+.nav a { padding: 4px 2px; }
+.nav span a { margin-left: 24px; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; transition: 0.2s; }
 .nav span a:hover { color: var(--text); }
+.nav span a[aria-current] { color: var(--teal); border-bottom-color: var(--teal); }
+.progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, var(--teal), var(--violet)); transform: scaleX(0); transform-origin: left; }
+@supports (animation-timeline: scroll()) {
+  .progress { animation: progress linear both; animation-timeline: scroll(root); }
+}
+@keyframes progress { to { transform: scaleX(1); } }
 
 main { padding: 0 clamp(16px, 4vw, 48px); max-width: 1200px; margin: 0 auto; }
 section, .contact { padding: 120px 0 40px; }
 
-.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; max-width: 640px; }
+.hero { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; max-width: 640px; }
 .eyebrow { font-family: var(--mono); color: var(--teal); font-size: 14px; letter-spacing: 0.04em; }
 h1 { font-size: clamp(56px, 11vw, 150px); line-height: 0.92; margin: 12px 0 24px; letter-spacing: -0.04em; }
 .grad { background: linear-gradient(90deg, var(--teal), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .lead { font-size: clamp(18px, 2vw, 22px); color: var(--muted); max-width: 520px; }
 .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 .btn { padding: 12px 20px; border: 1px solid var(--line); border-radius: 999px; transition: 0.2s; }
-.btn:hover { border-color: var(--teal); }
+.btn:hover { border-color: var(--teal); background: rgba(94, 234, 212, 0.08); transform: translateY(-2px); }
+.btn.primary:hover { background: #8ff3e3; }
 .btn.primary { background: var(--teal); color: #04120f; border-color: var(--teal); font-weight: 700; }
-.scroll-cue { margin-top: 56px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.scroll-cue { display: block; margin-top: 56px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
 
 h2 { font-size: clamp(36px, 6vw, 72px); margin: 0 0 8px; letter-spacing: -0.03em; }
 h3 { margin: 4px 0; font-size: 22px; }
 .sub { color: var(--muted); margin: 0 0 60px; }
 
-.rail { position: relative; padding: 20px 0; }
+.rail { position: relative; padding: 20px 0; margin: 0; list-style: none; }
 .rail::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(var(--teal), var(--violet), transparent); opacity: 0.4; }
 .card {
   position: relative; width: min(560px, 100%); margin: 0 0 120px; padding: 26px 28px;
@@ -64,6 +73,8 @@ h3 { margin: 4px 0; font-size: 22px; }
 .card ul { padding-left: 18px; color: #c4cadb; font-size: 15px; }
 .card li { margin: 6px 0; }
 .period { font-family: var(--mono); font-size: 13px; color: var(--teal); }
+/* the year stays pinned under the nav while its card scrolls past */
+.card .period { position: sticky; top: 66px; z-index: 1; display: block; margin: -26px -28px 8px; padding: 12px 28px 6px; background: #0e101a; border-radius: 17px 17px 0 0; }
 .org { color: var(--muted); margin: 0 0 8px; font-size: 15px; }
 .era-chem { border-top: 2px solid var(--amber); }
 .era-research { border-top: 2px solid var(--violet); }
@@ -90,7 +101,7 @@ h3 { margin: 4px 0; font-size: 22px; }
 .grid.two { grid-template-columns: repeat(2, 1fr); }
 .grid.three { grid-template-columns: repeat(3, 1fr); }
 .panel { display: block; padding: 22px; border: 1px solid var(--line); background: var(--panel); border-radius: 16px; transition: 0.25s; }
-a.panel:hover { border-color: var(--teal); transform: translateY(-4px); }
+a.panel:hover, a.panel:focus-visible { border-color: var(--teal); transform: translateY(-4px); background: rgba(94, 234, 212, 0.06); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4); }
 .panel p { color: #c4cadb; font-size: 15px; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
@@ -104,13 +115,27 @@ a.panel:hover { border-color: var(--teal); transform: translateY(-4px); }
 .contact h2 { font-size: clamp(40px, 8vw, 110px); }
 .links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; color: var(--muted); }
 small { color: var(--muted); font-family: var(--mono); }
+.links a { transition: color 0.2s; }
+.links a:hover { color: var(--teal); text-decoration: underline; text-underline-offset: 4px; }
 
 @media (max-width: 760px) {
+  .nav { padding: 10px 16px; font-size: 14px; }
+  .nav span a { margin-left: 10px; padding: 8px 4px; }
+  /* the hero molecule sits mid-screen: text above it, buttons below */
+  .hero { justify-content: space-between; padding: 88px 0 40px; }
+  h1 { font-size: 48px; margin: 8px 0 16px; }
+  .lead { font-size: 17px; }
+  .cta { gap: 8px; margin-top: 0; }
+  .btn { padding: 10px 14px; font-size: 15px; }
+  .scroll-cue { margin-top: 24px; }
+  section, .contact { padding-top: 80px; }
   .rail::before { left: 8px; }
-  .nav span a:not(:last-child) { display: none; }
   .grid.two, .grid.three { grid-template-columns: 1fr; }
-  .card { margin-bottom: 80px; }
+  .card { margin-bottom: 80px; padding: 20px; }
+  .card .period { top: 48px; margin: -20px -20px 8px; padding: 10px 20px 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .card.hit { animation: none; }
+  .btn, .panel, .nav a, .links a { transition: none; }
+  .btn:hover, a.panel:hover, a.panel:focus-visible { transform: none; }
 }
