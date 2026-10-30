@@ -41,33 +41,33 @@ export function initTerminal(chapter: HTMLElement) {
   const update = (p: number) => {
     last = p;
     const n = steps.length;
-    let eating = false;
+    let hacking = false;
     steps.forEach((s, k) => {
       if (!s.x.length) return; // not measured yet; the refresh event calls update again
-      const { eat, hack } = phases(p * n - k, k === 0, k === n - 1);
-      const key = `${Math.round(eat * 500)}|${Math.round(hack * 500)}`;
+      const { hack } = phases(p * n - k, k === 0);
+      const key = `${Math.round(hack * 500)}`;
       if (key !== s.key) {
         s.key = key;
         s.chars.forEach((c, i) => {
-          const g = glyphAt(i, s.real[i], s.plan, eat, hack);
+          const g = glyphAt(i, s.real[i], s.plan, hack);
           if (g === s.shown[i]) return;
           s.shown[i] = g;
           c.textContent = g;
           c.classList.toggle('g', g !== s.real[i]);
         });
       }
-      if (eat > 0 && eat < 1) {
-        eating = true;
+      if (hack > 0 && hack < 1) {
+        hacking = true;
         bots.forEach((b, j) => {
           if (j >= s.plan.bots) return void (b.style.visibility = 'hidden');
-          const st = botAt(s.plan, eat, j);
+          const st = botAt(s.plan, hack, j);
           b.style.visibility = 'visible';
           b.textContent = SPRITES[j][st.frame];
           b.style.transform = `translate(${s.x[st.char].toFixed(1)}px, ${s.y[st.char].toFixed(1)}px)`;
         });
       }
     });
-    if (!eating) bots.forEach((b) => (b.style.visibility = 'hidden'));
+    if (!hacking) bots.forEach((b) => (b.style.visibility = 'hidden'));
   };
 
   const measure = () => {

@@ -130,13 +130,20 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
 [data-motion='off'] .hero { min-height: 80dvh; max-width: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
-/* ===== #code terminal: step text as terminal output, ASCII bots eat it between steps ===== */
+/* ===== #code terminal: steps stack as terminal output, ASCII bots hack each new one in ===== */
 .term .steps { align-self: start; display: grid; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); font: 400 13px/1.6 var(--mono); }
-.term .step { position: relative; inset: auto; grid-area: 1 / 1; }
+.term .pin { max-width: none; }
+.term .steps { max-width: 880px; gap: 14px; margin-top: 20px; }
+.term h2 { font-size: clamp(44px, 5.6vw, 84px); }
+.term .step { position: static; transform: translateY(16px); display: grid; grid-template-columns: max-content max-content 1fr; column-gap: 14px; align-items: baseline; }
+.term .step .prompt, .term .step ul { grid-column: 1 / -1; }
+.term .step.is-active, .term .step.is-past { opacity: 1; transform: none; pointer-events: auto; }
+.term .step.is-past { opacity: 0.8; }
+@media (max-width: 760px), (max-height: 780px) { .term .step.is-past ul { display: none; } }
 .term .step h3 { font: 500 15px/1.4 var(--mono); letter-spacing: 0; margin: 4px 0; }
 .term .step .period { font: 400 13px var(--mono); }
 .term .step ul { max-width: none; }
-.term .prompt { color: var(--accent); margin-bottom: 12px; overflow-wrap: anywhere; }
+.term .prompt { color: var(--accent); margin-bottom: 4px; overflow-wrap: anywhere; }
 .term .step .g { color: var(--accent); }
 .bots { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .bot { position: absolute; left: 0; top: 0; margin: -0.9em 0 0 -3.5ch; font: 500 11px/1 var(--mono); color: var(--accent); white-space: pre; visibility: hidden; will-change: transform; }
@@ -150,8 +157,7 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
 [data-motion='off'] .bots { display: none; }
 
 /* ===== about ===== */
-.about { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: center; min-height: 80dvh; padding: 96px 0; }
-.about img { width: 100%; max-width: 360px; height: auto; border-radius: var(--radius); background: #1b2227; }
+.about { display: block; max-width: 860px; min-height: 80dvh; padding: 96px 0; }
 .about h2 { font-size: clamp(36px, 4.6vw, 68px); }
 .about-lead { margin-top: 20px; font-size: clamp(18px, 1.7vw, 22px); line-height: 1.5; max-width: 34em; }
 .about dl { margin: 32px 0 0; display: grid; gap: 18px; }
@@ -159,8 +165,13 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
 .about dt { font: 400 13px/1.7 var(--mono); color: var(--accent); }
 .about dd { margin: 0; color: var(--muted); max-width: 34em; }
 @media (max-width: 760px) {
-  .about { grid-template-columns: 1fr; padding: 64px 0; }
-  .about img { max-width: 220px; }
+  .about { padding: 64px 0; }
   .about dl > div { grid-template-columns: 1fr; gap: 2px; }
 }
 [data-motion='off'] .about { min-height: 0; }
+
+/* terminal rows: tighter so four stacked steps fit a 900px screen */
+.term .step ul { margin-top: 2px; gap: 3px; }
+.term .step h3 { margin: 0; }
+.term .bar { display: none; }
+.term .pin { padding-bottom: 28px; }

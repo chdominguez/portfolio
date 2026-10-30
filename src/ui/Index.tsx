@@ -3,14 +3,6 @@ import { profile, projects, publications, skills, spoken } from '../content/cv';
 export function About() {
   return (
     <section id="about" className="about" aria-labelledby="about-title">
-      <img
-        src="/christian.webp"
-        width="519"
-        height="640"
-        alt="Christian Domínguez"
-        loading="lazy"
-        decoding="async"
-      />
       <div>
         <h2 id="about-title">Hi, I'm Christian.</h2>
         <p className="about-lead">
