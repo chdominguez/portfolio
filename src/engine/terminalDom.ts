@@ -21,8 +21,16 @@ export function initTerminal(chapter: HTMLElement) {
   const els = Array.from(chapter.querySelectorAll<HTMLElement>('.step'));
   const splits: SplitText[] = [];
   const steps: StepData[] = els.map((s) => {
-    const split = SplitText.create(s.querySelectorAll('.period, h3, .org, ul li'), {
-      type: 'words,chars',
+    const targets = Array.from(s.querySelectorAll<HTMLElement>('.period, h3, .org, ul li'));
+    const texts = targets.map((t) => t.textContent ?? '');
+    const split = SplitText.create(targets, { type: 'words,chars', aria: 'none' });
+    // the split glyphs are decoration: screen readers get one visually hidden copy of each line
+    [...split.words, ...split.chars].forEach((n) => n.setAttribute('aria-hidden', 'true'));
+    targets.forEach((t, i) => {
+      const sr = document.createElement('span');
+      sr.className = 'sr';
+      sr.textContent = texts[i];
+      t.append(sr);
     });
     splits.push(split);
     const chars = split.chars as HTMLElement[];

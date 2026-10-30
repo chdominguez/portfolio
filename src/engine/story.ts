@@ -10,9 +10,43 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
  * Wires the DOM chapters to the world. Each chapter is a tall section with a sticky pin, so
  * ScrollTrigger only has to report progress (no pinning, which fights smooth scrolling).
  */
+/** Intro and scroll reveals shared by the full and the lite layouts. */
+function intro() {
+  gsap.to(world, { reveal: 1, duration: 1.6, ease: 'power3.out', delay: 0.15 });
+  gsap.from('[data-in]', {
+    y: 28,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+    stagger: 0.09,
+    delay: 0.1,
+    clearProps: 'all',
+  });
+  gsap.utils.toArray<HTMLElement>('.index .reveal').forEach((el) =>
+    gsap.from(el, {
+      y: 36,
+      opacity: 0,
+      duration: 0.9,
+      ease: 'power3.out',
+      clearProps: 'all',
+      scrollTrigger: { trigger: el, start: 'top 90%' },
+    })
+  );
+}
+
 export function initStory() {
   const mm = gsap.matchMedia();
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
+  // phones and tablets: normal flow, the hero molecule fades out as you leave the hero
+  mm.add('(max-width: 900px) and (prefers-reduced-motion: no-preference)', () => {
+    intro();
+    ScrollTrigger.create({
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom 30%',
+      onUpdate: (self) => (world.visible = 1 - self.progress),
+    });
+  });
+  mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
     const progress: [number, number, number] = [0, 0, 0];
     const chapters = gsap.utils.toArray<HTMLElement>('.chapter');
     const title = document.querySelector<HTMLElement>('#molecules h2');
@@ -30,7 +64,7 @@ export function initStory() {
     };
 
     const codeEl = document.querySelector<HTMLElement>('#code');
-    const term = codeEl ? initTerminal(codeEl) : null; // #code terminal: bots eat, text is hacked in
+    const term = codeEl ? initTerminal(codeEl) : null; // #code terminal: each step is hacked in by bots
 
     // the pool steps aside while About is on screen, then returns for the Molecules chapter
     ScrollTrigger.create({
@@ -70,7 +104,7 @@ export function initStory() {
           if (i === 0 && split && seeds) {
             // damped shake once the fragment lands (impact 0.7..1), reversible on scroll up
             const hit = clamp((world.impact - 0.7) / 0.3);
-            const pulse = hit === 0 ? 0 : Math.sin(hit * 14) * Math.exp(-hit * 3.5);
+            const pulse = Math.sin(hit * 14) * Math.exp(-hit * 3.5) * (1 - hit); // exactly 0 once settled
             split.chars.forEach((c, k) => {
               gsap.set(c, {
                 x: seeds[k].x * 60 * pulse,
@@ -85,26 +119,7 @@ export function initStory() {
 
     // keep progress-derived state correct on load and after a resize
     ScrollTrigger.addEventListener('refresh', () => derive(progress));
-    gsap.to(world, { reveal: 1, duration: 1.6, ease: 'power3.out', delay: 0.15 });
-    gsap.from('[data-in]', {
-      y: 28,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      stagger: 0.09,
-      delay: 0.1,
-      clearProps: 'all',
-    });
-    gsap.utils.toArray<HTMLElement>('.index .reveal').forEach((el) =>
-      gsap.from(el, {
-        y: 36,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        clearProps: 'all',
-        scrollTrigger: { trigger: el, start: 'top 90%' },
-      })
-    );
+    intro();
 
     return () => {
       term?.revert();

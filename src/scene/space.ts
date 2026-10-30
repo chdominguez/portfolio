@@ -7,7 +7,7 @@ export function toWorld(px: number, py: number, vp: { width: number; height: num
 }
 
 export const smooth = (t: number) => t * t * (3 - 2 * t);
-export const narrow = (vp: { width: number; height: number }) => vp.width / vp.height < 0.9;
+export const narrow = (_vp?: unknown) => window.innerWidth <= 900;
 
 /** Where the figure sits: right of the text on desktop, above it on phones. */
 export function stage(vp: { width: number; height: number }) {

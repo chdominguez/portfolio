@@ -10,20 +10,76 @@ export const profile = {
   updated: 'September 2026',
 };
 
-export const publications = [
+export interface Paper {
+  title: string;
+  authors: string[];
+  venue: string;
+  kind: 'Journal article' | 'Preprint';
+  date: string;
+  doi: string;
+}
+
+// From the ORCID record, newest first.
+export const publications: Paper[] = [
   {
-    title: 'Horus: A reproducible workflow manager for bioinformatics',
-    authors: 'C. Domínguez-Dalmases, A. Cañellas-Solé, R. Lambea-Jané, M. Municoy, V. Guallar',
-    venue: 'BioRxiv',
-    year: 2025,
+    title:
+      'Quantum mechanical atomistic investigation of the hydrogen addition to carbon monosulfide on interstellar water ice',
+    authors: [
+      'Gabriella Di Genova',
+      'Gerard Pareras',
+      'Christian Domínguez-Dalmases',
+      'Nadia Balucani',
+      'Cecilia Ceccarelli',
+      'Albert Rimola',
+    ],
+    venue: 'Astronomy & Astrophysics',
+    kind: 'Journal article',
+    date: '2026',
+    doi: '10.1051/0004-6361/202660371',
+  },
+  {
+    title: 'PredIG: an interpretable predictor of T-cell epitope immunogenicity',
+    authors: [
+      'Roc Farriol-Duran',
+      'Christian Domínguez-Dalmases',
+      'Albert Cañellas-Solé',
+      'Miguel Vazquez',
+      'Eduard Porta-Pardo',
+      'Víctor Guallar',
+    ],
+    venue: 'Genome Medicine',
+    kind: 'Journal article',
+    date: '2025',
+    doi: '10.1186/s13073-025-01569-8',
+  },
+  {
+    title: 'aMLProt: an automated machine learning library for protein applications',
+    authors: [
+      'Ruite Xiang',
+      'Christian Domínguez-Dalmases',
+      'Albert Cañellas-Solé',
+      'Victor Guallar',
+    ],
+    venue: 'Bioinformatics',
+    kind: 'Journal article',
+    date: '2025',
+    doi: '10.1093/bioinformatics/btaf543',
+  },
+  {
+    title: 'Horus: Reproducible Workflow Manager for Biomolecular Modelling',
+    authors: ['C Domínguez-Dalmases', 'A Cañellas-Solé', 'R Lambea-Jané', 'M Municoy', 'V Guallar'],
+    venue: 'bioRxiv',
+    kind: 'Preprint',
+    date: '2025',
     doi: '10.1101/2025.09.26.678751',
   },
   {
     title:
-      'Water formation on interstellar silicates: role of Fe²⁺/H₂ interactions in the O + H₂ → H₂O reaction',
-    authors: 'C. Domínguez-Dalmases, A. Rimola, M. Serra-Peralta',
+      'Water formation on interstellar silicates: role of Fe2+/H2 interactions in the O + H2 → H2O reaction',
+    authors: ['Christian Domínguez-Dalmases', 'Albert Rimola', 'Marc Serra-Peralta'],
     venue: 'Physical Chemistry Chemical Physics',
-    year: 2021,
+    kind: 'Journal article',
+    date: '2022',
     doi: '10.1039/d2cp04051d',
   },
 ];

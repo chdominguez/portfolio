@@ -9,6 +9,9 @@ import './styles.css';
 const gl = document.createElement('canvas').getContext('webgl2');
 if (matchMedia('(prefers-reduced-motion: reduce)').matches || !gl) {
   document.documentElement.dataset.motion = 'off';
+} else if (innerWidth <= 900) {
+  // phones and tablets: normal page flow, 3D only in the hero
+  document.documentElement.dataset.motion = 'lite';
 }
 
 createRoot(document.getElementById('root')!).render(

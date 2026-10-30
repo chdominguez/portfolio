@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { startClock } from './engine/clock';
 import { initStory } from './engine/story';
@@ -13,25 +13,40 @@ const Stage = lazy(() => import('./scene/Stage'));
 export const motionOn = () => document.documentElement.dataset.motion !== 'off';
 
 export function App() {
+  const [on, setOn] = useState(motionOn);
+
   useEffect(() => {
-    if (!motionOn()) return;
+    if (!on) return;
     const stopStory = initStory();
     const stopClock = startClock();
     return () => {
       stopStory();
       stopClock();
     };
+  }, [on]);
+
+  // a lost WebGL context drops the page to the static layout (all content, no canvas)
+  useEffect(() => {
+    const off = () => {
+      document.documentElement.dataset.motion = 'off';
+      setOn(false);
+    };
+    window.addEventListener('portfolio:gl-lost', off);
+    return () => window.removeEventListener('portfolio:gl-lost', off);
   }, []);
 
   return (
     <>
       <Analytics />
-      <a className="skip" href="#work">
+      <a className="skip" href="#main">
         Skip to content
       </a>
       <nav className="nav" aria-label="Main">
-        <a href="#top" className="brand">
-          {profile.name}
+        <a href="#top" className="brand" aria-label={profile.name}>
+          <span className="full">{profile.name}</span>
+          <span className="short" aria-hidden="true">
+            CD
+          </span>
         </a>
         <span>
           <a href="#about">About</a>
@@ -40,12 +55,12 @@ export function App() {
           <a href="#papers">Papers</a>
         </span>
       </nav>
-      {motionOn() && (
+      {on && (
         <Suspense fallback={null}>
           <Stage />
         </Suspense>
       )}
-      <main>
+      <main id="main" tabIndex={-1}>
         <header className="hero" id="top">
           <h1 data-in>{profile.tagline}</h1>
           <p data-in>

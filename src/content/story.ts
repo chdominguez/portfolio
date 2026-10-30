@@ -34,7 +34,7 @@ export const chapters: Chapter[] = [
         title: 'Researcher',
         org: 'Universitat Autònoma de Barcelona',
         points: [
-          'Modeled interstellar reaction pathways with quantum chemistry on HPC clusters.',
+          'Modeled interstellar reaction pathways with quantum chemistry on HPC clusters. First author of the resulting paper on water formation (PCCP, 2022).',
           'Automated job submission and post-processing with Bash, Python and SLURM.',
         ],
       },
@@ -87,7 +87,7 @@ export const chapters: Chapter[] = [
         title: 'Research Engineer II',
         org: 'Barcelona Supercomputing Center',
         points: [
-          'MDPosit on AWS with MongoDB and Docker Swarm. PredIG, aMLProt and YieldDB.',
+          'MDPosit on AWS with MongoDB and Docker Swarm. YieldDB. PredIG and aMLProt, both now published.',
           'Dual affiliation with Nostrum. Visitor at BSC since January 2026.',
         ],
       },
@@ -119,9 +119,9 @@ export const chapters: Chapter[] = [
       },
       {
         period: '2025',
-        title: 'Horus: a reproducible workflow manager for bioinformatics',
-        org: 'BioRxiv preprint',
-        points: ['Co-authored the paper that describes the Horus workflow manager.'],
+        title: 'Horus: Reproducible Workflow Manager for Biomolecular Modelling',
+        org: 'bioRxiv preprint',
+        points: ['First author of the paper that describes the Horus workflow manager.'],
       },
     ],
   },

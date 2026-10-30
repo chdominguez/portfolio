@@ -27,6 +27,10 @@ export function About() {
             <dd>HPC, bioinformatics, molecular dynamics, machine learning pipelines.</dd>
           </div>
           <div>
+            <dt>Published</dt>
+            <dd>Four journal articles and a preprint, first author on two.</dd>
+          </div>
+          <div>
             <dt>Based in</dt>
             <dd>Barcelona. Spanish and Catalan native, English C1.</dd>
           </div>
@@ -95,12 +99,22 @@ export function Papers() {
       <h2 id="papers-title" className="reveal">
         Papers
       </h2>
+      <p className="intro reveal">Four journal articles and one preprint. Source: ORCID.</p>
       <ul className="papers">
         {publications.map((p) => (
           <li key={p.doi} className="reveal">
-            <span className="mono">{p.year}</span>
+            <span className="mono">
+              {p.date} · {p.kind}
+            </span>
             <a href={`https://doi.org/${p.doi}`}>{p.title}</a>
-            <p>{p.authors}</p>
+            <p>
+              {p.authors.map((a, i) => (
+                <span key={a}>
+                  {/Dom[ií]nguez-Dalmases/.test(a) ? <strong>{a}</strong> : a}
+                  {i < p.authors.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+            </p>
             <p className="mono">{p.venue}</p>
           </li>
         ))}

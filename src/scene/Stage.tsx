@@ -1,5 +1,5 @@
-import { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Suspense, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { renderHook } from '../engine/clock';
 import { world } from '../engine/world';
 import { Fragment } from './Fragment';
@@ -7,12 +7,23 @@ import { Hero } from './Hero';
 import { Racks } from './Racks';
 import { Snake } from './Snake';
 
+/** Opens once the molecules chapter is mostly done, so the snake model downloads just in time. */
+function Gate({ onOpen }: { onOpen: () => void }) {
+  useFrame(() => {
+    if (world.impact > 0.5) onOpen();
+  });
+  return null;
+}
+
 /** One fixed, click-through canvas. Rendering is driven by the shared ticker (frameloop never). */
 export default function Stage() {
+  const lite = document.documentElement.dataset.motion === 'lite';
+  const [late, setLate] = useState(false);
   const narrow = window.innerWidth < 760;
   return (
     <Canvas
       className="stage"
+      aria-hidden="true"
       frameloop="never"
       dpr={[1, narrow ? 1.25 : 1.5]}
       camera={{ position: [0, 0, 18], fov: 35 }}
@@ -35,6 +46,7 @@ export default function Stage() {
         el.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
           renderHook.fn = null;
+          window.dispatchEvent(new Event('portfolio:gl-lost'));
           document.documentElement.dataset.motion = 'off';
         });
       }}
@@ -44,10 +56,17 @@ export default function Stage() {
       <directionalLight position={[-6, -2, -4]} intensity={0.8} color="#7FD6B0" />
       <Hero />
       <Fragment />
-      <Suspense fallback={null}>
-        <Snake />
-      </Suspense>
-      <Racks />
+      {!lite && (
+        <>
+          <Gate onOpen={() => setLate(true)} />
+          {late && (
+            <Suspense fallback={null}>
+              <Snake />
+            </Suspense>
+          )}
+          <Racks />
+        </>
+      )}
     </Canvas>
   );
 }

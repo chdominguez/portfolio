@@ -110,7 +110,6 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
 
 @media (max-width: 760px) {
   body { font-size: 16px; }
-  .nav span a:nth-child(n + 2) { display: none; }
   .hero { max-width: none; justify-content: flex-end; padding-bottom: 48px; }
   .pin { max-width: none; padding-top: 38dvh; }
   .lede, .bar { display: none; }
@@ -122,11 +121,11 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
 
 /* static mode: reduced motion, no WebGL, or lost context. Same content, plain flow. */
 [data-motion='off'] .stage { display: none; }
-[data-motion='off'] .chapter { height: auto; padding: 96px 0 0; }
-[data-motion='off'] .pin { position: static; height: auto; max-width: none; padding: 0; }
-[data-motion='off'] .steps { display: grid; gap: 40px; }
-[data-motion='off'] .step { position: static; opacity: 1; transform: none; }
-[data-motion='off'] .bar { display: none; }
+:is([data-motion='off'], [data-motion='lite']) .chapter { height: auto; padding: 96px 0 0; }
+:is([data-motion='off'], [data-motion='lite']) .pin { position: static; height: auto; max-width: none; padding: 0; display: block; }
+:is([data-motion='off'], [data-motion='lite']) .steps { display: grid; gap: 40px; }
+:is([data-motion='off'], [data-motion='lite']) .step { position: static !important; opacity: 1 !important; transform: none !important; }
+:is([data-motion='off'], [data-motion='lite']) .bar { display: none; }
 [data-motion='off'] .hero { min-height: 80dvh; max-width: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
@@ -152,9 +151,9 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
   .term .step h3 { font-size: 13px; }
   .bot { font-size: 9px; }
 }
-[data-motion='off'] .term .steps { display: grid; gap: 28px; }
-[data-motion='off'] .term .step { grid-area: auto; }
-[data-motion='off'] .bots { display: none; }
+:is([data-motion='off'], [data-motion='lite']) .term .steps { display: grid; gap: 28px; }
+:is([data-motion='off'], [data-motion='lite']) .term .step { grid-area: auto; }
+:is([data-motion='off'], [data-motion='lite']) .bots { display: none; }
 
 /* ===== about ===== */
 .about { display: block; max-width: 860px; min-height: 80dvh; padding: 96px 0; }
@@ -168,10 +167,26 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
   .about { padding: 64px 0; }
   .about dl > div { grid-template-columns: 1fr; gap: 2px; }
 }
-[data-motion='off'] .about { min-height: 0; }
+:is([data-motion='off'], [data-motion='lite']) .about { min-height: 0; }
 
 /* terminal rows: tighter so four stacked steps fit a 900px screen */
 .term .step ul { margin-top: 2px; gap: 3px; }
 .term .step h3 { margin: 0; }
 .term .bar { display: none; }
 .term .pin { padding-bottom: 28px; }
+
+/* ===== flow layout (phones, tablets, static mode) and audit fixes ===== */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.nav .short { display: none; }
+.chapter:not(.term) .step.is-past, .term .step.is-past { opacity: 0.82; }
+.mail { word-break: normal; overflow-wrap: anywhere; font-size: clamp(17px, 5vw, 64px); }
+:is([data-motion='off'], [data-motion='lite']) .term .steps { padding: 16px; }
+:is([data-motion='off'], [data-motion='lite']) .chapter h2 { margin-bottom: 4px; }
+@media (max-width: 900px) {
+  .nav { gap: 12px; }
+  .nav .full { display: none; }
+  .nav .short { display: inline; }
+  .nav span a, .nav span a:not(:last-child) { display: inline; margin-left: 16px; }
+  .hero { max-width: none; justify-content: flex-end; padding-bottom: 56px; }
+  .term .step { grid-template-columns: 1fr; row-gap: 2px; }
+}
