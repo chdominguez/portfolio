@@ -1,4 +1,4 @@
-import { education, profile, projects, publications, roles, skills, spoken } from '../content/cv';
+import { education, profile, projects, publications, roles, spoken } from '../content/cv';
 
 const ids = ['temple', 'nostrum2', 'nostrum1', 'bsc2', 'bsc1', 'ub', 'uab'];
 
@@ -115,29 +115,6 @@ export function Projects() {
           );
         })}
       </div>
-    </section>
-  );
-}
-
-export function Stack() {
-  const rows: [string, string[]][] = [
-    ['Languages', skills.languages],
-    ['Frameworks & tools', skills.tools],
-    ['Machine learning', skills.ml],
-  ];
-  return (
-    <section id="stack">
-      <h2 className="reveal">Stack</h2>
-      {rows.map(([label, items]) => (
-        <div key={label} className="reveal stack-row">
-          <h3>{label}</h3>
-          <p className="tags">
-            {items.map((s) => (
-              <span key={s}>{s}</span>
-            ))}
-          </p>
-        </div>
-      ))}
     </section>
   );
 }

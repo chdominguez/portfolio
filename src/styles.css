@@ -114,3 +114,21 @@ small { color: var(--muted); font-family: var(--mono); }
 @media (prefers-reduced-motion: reduce) {
   .card.hit { animation: none; }
 }
+
+/* ===== Skills section (src/sections/Skills.tsx) ===== */
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: start; }
+.skill { border: 1px solid var(--line); background: var(--panel); border-radius: 16px; transition: border-color 0.25s; }
+.skill:hover, .skill[open] { border-color: var(--teal); }
+.skill summary { display: block; padding: 22px 48px 22px 22px; cursor: pointer; list-style: none; position: relative; }
+.skill summary::-webkit-details-marker { display: none; }
+.skill summary::after { content: '+'; position: absolute; right: 22px; top: 20px; font-family: var(--mono); font-size: 20px; color: var(--teal); }
+.skill[open] summary::after { content: '\2212'; }
+.skill summary:focus-visible { outline: 2px solid var(--teal); outline-offset: -2px; border-radius: 16px; }
+.skill-name { display: block; font-size: 22px; font-weight: 700; }
+.skill-use { display: block; margin-top: 6px; color: #c4cadb; font-size: 15px; }
+.skill ul { margin: 0; padding: 0 22px 22px 40px; color: #c4cadb; font-size: 15px; }
+.skill li { margin: 8px 0; }
+.skill-where { display: block; color: var(--muted); font-family: var(--mono); font-size: 12px; }
+@media (max-width: 760px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}

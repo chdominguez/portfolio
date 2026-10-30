@@ -1,15 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { initScroll, reducedMotion } from './scroll';
-import {
-  Contact,
-  Education,
-  Hero,
-  Projects,
-  Publications,
-  Stack,
-  Timeline,
-} from './sections/Sections';
+import { Contact, Education, Hero, Projects, Publications, Timeline } from './sections/Sections';
+import { Skills } from './sections/Skills';
 
 // The 3D stack loads after first paint, so the text is readable immediately.
 const Stage = lazy(() => import('./scene/Stage'));
@@ -38,7 +31,7 @@ export function App() {
         <Timeline />
         <Publications />
         <Projects />
-        <Stack />
+        <Skills />
         <Education />
         <Contact />
       </main>
