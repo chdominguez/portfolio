@@ -1,1 +1,7 @@
-{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
+{
+  "framework": "vite",
+  "installCommand": "yarn install --immutable",
+  "buildCommand": "yarn build",
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
