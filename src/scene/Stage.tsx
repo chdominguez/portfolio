@@ -25,7 +25,7 @@ export default function Stage() {
           el.style.opacity = String(world.visible * Math.min(1, world.reveal * 2));
           if (world.visible < 0.01) return;
           const t0 = performance.now();
-          state.advance(ms, true);
+          state.advance(ms / 1000, true); // never-mode expects seconds, not ms
           // adaptive resolution: drop the pixel ratio if frames stay slow
           slow = performance.now() - t0 > 14 ? slow + 1 : Math.max(0, slow - 1);
           if (slow > 90 && state.gl.getPixelRatio() > 1) {

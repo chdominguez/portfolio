@@ -27,7 +27,7 @@ export function Particles({ origin }: { origin: THREE.Vector3 }) {
     const s = stage(viewport);
     const reveal = 1 - Math.pow(1 - world.reveal, 3);
 
-    spin.current += dt * 0.25 + world.velocity * dt * 0.4;
+    spin.current += dt * 0.25 + Math.max(-40, Math.min(40, world.velocity)) * dt * 0.03;
     const g = group.current;
     g.position.set(s.x, s.y, 0);
     // the lattice shrinks as it morphs so it stays clear of the text column
