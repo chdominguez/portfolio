@@ -113,3 +113,22 @@ h2 { white-space: nowrap; font-size: clamp(48px, 8vw, 120px); line-height: 0.95;
 [data-motion='off'] .bar { display: none; }
 [data-motion='off'] .hero { min-height: 80dvh; max-width: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ===== #code terminal: step text as terminal output, ASCII bots eat it between steps ===== */
+.term .steps { align-self: start; display: grid; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); font: 400 13px/1.6 var(--mono); }
+.term .step { position: relative; inset: auto; grid-area: 1 / 1; }
+.term .step h3 { font: 500 15px/1.4 var(--mono); letter-spacing: 0; margin: 4px 0; }
+.term .step .period { font: 400 13px var(--mono); }
+.term .step ul { max-width: none; }
+.term .prompt { color: var(--accent); margin-bottom: 12px; overflow-wrap: anywhere; }
+.term .step .g { color: var(--accent); }
+.bots { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.bot { position: absolute; left: 0; top: 0; margin: -0.9em 0 0 -3.5ch; font: 500 11px/1 var(--mono); color: var(--accent); white-space: pre; visibility: hidden; will-change: transform; }
+@media (max-width: 760px) {
+  .term .steps { padding: 14px; font-size: 12px; }
+  .term .step h3 { font-size: 13px; }
+  .bot { font-size: 9px; }
+}
+[data-motion='off'] .term .steps { display: grid; gap: 28px; }
+[data-motion='off'] .term .step { grid-area: auto; }
+[data-motion='off'] .bots { display: none; }
