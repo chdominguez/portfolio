@@ -1,10 +1,7 @@
-# Christian Dominguez portfolio
+# Portfolio
 
-Welcome to the source code of my portfolio website.
+Scroll-driven 3D landing page: Vite + React + TypeScript, react-three-fiber, GSAP, Lenis.
 
-Tech stack used:
-
- - NextJS
- - Mantine
- - Github CI/CD
- - Docker
+- `yarn dev` / `yarn build` / `yarn test`
+- Content lives in `src/content/cv.ts` (source: `public/cv_english.pdf`).
+- One fixed canvas (`src/scene/Stage.tsx`); each actor reads DOM `data-anchor` rects via `src/scroll.ts`.
