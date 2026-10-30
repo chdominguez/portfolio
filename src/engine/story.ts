@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
+import { initTerminal } from './terminalDom';
 import { clamp, derive, world } from './world';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -28,6 +29,9 @@ export function initStory() {
       world.target.y = r.top + r.height / 2;
     };
 
+    const codeEl = document.querySelector<HTMLElement>('#code');
+    const term = codeEl ? initTerminal(codeEl) : null; // #code terminal: bots eat, text is hacked in
+
     chapters.forEach((el, i) => {
       const steps = Array.from(el.querySelectorAll<HTMLElement>('.step'));
       let current = -1;
@@ -48,6 +52,7 @@ export function initStory() {
               s.classList.toggle('is-past', k < idx);
             });
           }
+          if (el === codeEl) term?.update(self.progress);
           el.style.setProperty('--p', self.progress.toFixed(3));
           if (i === 0 && split && seeds) {
             // damped shake once the fragment lands (impact 0.7..1), reversible on scroll up
@@ -88,7 +93,10 @@ export function initStory() {
       })
     );
 
-    return () => split?.revert();
+    return () => {
+      term?.revert();
+      split?.revert();
+    };
   });
   return () => mm.revert();
 }
