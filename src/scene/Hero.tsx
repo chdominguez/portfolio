@@ -2,29 +2,39 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { world } from '../engine/world';
-import { BallStick, benzene } from './Molecule';
+import { BallStick, water } from './Molecule';
+import { POOL_SCALE, SLOTS, TILT, pool } from './pool';
 import { stage } from './space';
 
-/** Benzene in ball-and-stick, the hero object. Its position is shared with the fragment. */
-export function Hero({ origin }: { origin: THREE.Vector3 }) {
+/** Hero: a pool of water. Slot 0 belongs to the Fragment, which ejects it later. */
+export function Hero() {
   const outer = useRef<THREE.Group>(null!);
-  const ring = useRef<THREE.Group>(null!);
-  const spin = useRef(0);
-  useFrame(({ viewport, pointer }, dt) => {
+  const mols = useRef<(THREE.Group | null)[]>([]);
+  useFrame(({ viewport, pointer, clock }) => {
     const s = stage(viewport);
     const reveal = 1 - Math.pow(1 - world.reveal, 3);
-    spin.current += dt * 0.25 + Math.max(-40, Math.min(40, world.velocity)) * dt * 0.03;
+    const t = clock.elapsedTime;
     outer.current.visible = world.mol > 0.01;
     outer.current.position.set(s.x, s.y, 0);
     outer.current.scale.setScalar(s.scale * reveal * world.mol);
-    // tilted toward the camera so the ring reads, then a turntable spin around its own axis
-    outer.current.rotation.set(-0.95 + pointer.y * 0.2, pointer.x * 0.2, 0);
-    ring.current.rotation.z = spin.current;
-    origin.copy(outer.current.position);
+    outer.current.rotation.set(pointer.y * 0.15, pointer.x * 0.15, 0);
+    pool.center.copy(outer.current.position);
+    pool.scale = s.scale * reveal;
+    mols.current.forEach((m, k) => {
+      if (!m) return;
+      m.rotation.set(TILT[k][0] + t * 0.35, TILT[k][1] + t * 0.27, TILT[k][2] + t * 0.18);
+    });
   });
   return (
     <group ref={outer}>
-      <BallStick ref={ring} def={benzene} />
+      {SLOTS.map(
+        (p, k) =>
+          k > 0 && (
+            <group key={k} position={p} scale={POOL_SCALE}>
+              <BallStick ref={(m) => (mols.current[k] = m)} def={water} />
+            </group>
+          )
+      )}
     </group>
   );
 }

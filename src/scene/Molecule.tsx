@@ -2,7 +2,7 @@ import { forwardRef, useMemo } from 'react';
 import * as THREE from 'three';
 import { C } from './palette';
 
-type El = 'C' | 'H' | 'O';
+type El = 'H' | 'O';
 type V3 = [number, number, number];
 export interface MoleculeDef {
   atoms: { el: El; p: V3 }[];
@@ -11,24 +11,8 @@ export interface MoleculeDef {
 }
 
 const ATOM: Record<El, { color: THREE.Color; r: number }> = {
-  C: { color: C.carbon, r: 0.42 },
   H: { color: C.text, r: 0.26 },
   O: { color: C.oxygen, r: 0.46 },
-};
-
-const ring = (n: number, radius: number, el: El): MoleculeDef['atoms'] =>
-  Array.from({ length: n }, (_, k) => {
-    const a = (k / n) * Math.PI * 2;
-    return { el, p: [Math.cos(a) * radius, Math.sin(a) * radius, 0] as V3 };
-  });
-
-/** Benzene, Kekule form: alternating double bonds, bond lengths in angstroms. */
-export const benzene: MoleculeDef = {
-  atoms: [...ring(6, 1.4, 'C'), ...ring(6, 2.48, 'H')],
-  bonds: [
-    ...[0, 1, 2, 3, 4, 5].map((i) => [i, (i + 1) % 6, i % 2 ? 1 : 2] as [number, number, 1 | 2]),
-    ...[0, 1, 2, 3, 4, 5].map((i) => [i, i + 6, 1] as [number, number, 1 | 2]),
-  ],
 };
 
 /** Water, 104.5 degree angle, 0.96 angstrom bonds. */
