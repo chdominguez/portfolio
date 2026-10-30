@@ -1,0 +1,43 @@
+/**
+ * Plain mutable bridge between the DOM timeline and the WebGL scene. Scroll writes it, actors
+ * read it inside the render loop. Never put this in React state.
+ */
+export const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+export interface World {
+  /** 0 molecule, 1 graph, 2 cluster */
+  morph: number;
+  /** fragment flight + burst, 0..1 */
+  impact: number;
+  /** screen px of the title the fragment hits */
+  target: { x: number; y: number };
+  snake: number;
+  lit: number;
+  /** canvas visibility 0..1 */
+  visible: number;
+  /** intro scale 0..1 */
+  reveal: number;
+  velocity: number;
+}
+
+export const world: World = {
+  morph: 0,
+  impact: 0,
+  target: { x: 0, y: 0 },
+  snake: 0,
+  lit: 0,
+  visible: 1,
+  reveal: 0,
+  velocity: 0,
+};
+
+/** Progress of the three pinned chapters (0 before, 1 after) to world state. */
+export function derive(p: readonly [number, number, number], w: World = world) {
+  w.impact = clamp((p[0] - 0.1) / 0.5);
+  w.morph = clamp(p[1] * 2) + clamp(p[2] * 2);
+  w.snake = clamp((p[1] - 0.45) / 0.5);
+  w.lit = clamp((p[2] - 0.4) / 0.55);
+  w.visible = 1 - clamp((p[2] - 0.92) / 0.08);
+  return w;
+}

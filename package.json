@@ -10,11 +10,13 @@
     "typecheck": "tsc --noEmit",
     "prettier:check": "prettier --check \"src/**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "test": "npm run prettier:check && npm run typecheck && npm run build"
+    "unit": "vitest run",
+    "test": "npm run prettier:check && npm run unit && npm run typecheck && npm run build"
   },
   "packageManager": "yarn@4.5.0",
   "dependencies": {
-    "@react-three/drei": "9",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource-variable/schibsted-grotesk": "^5.3.0",
     "@react-three/fiber": "8",
     "@vercel/analytics": "^2.0.1",
     "gsap": "^3.15.0",
@@ -30,6 +32,7 @@
     "@vitejs/plugin-react": "^6.1.2",
     "prettier": "^3.9.10",
     "typescript": "^5.9",
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
   }
 }
