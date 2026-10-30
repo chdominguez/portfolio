@@ -12,6 +12,6 @@ export const narrow = (vp: { width: number; height: number }) => vp.width / vp.h
 /** Where the figure sits: right of the text on desktop, above it on phones. */
 export function stage(vp: { width: number; height: number }) {
   return narrow(vp)
-    ? { x: 0, y: vp.height * 0.2, scale: 0.55 }
+    ? { x: 0, y: vp.height * 0.27, scale: 0.55 }
     : { x: vp.width * 0.22, y: 0, scale: 1 };
 }
