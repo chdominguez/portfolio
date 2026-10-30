@@ -214,47 +214,158 @@ export const projects = [
   },
 ];
 
-export const skills = {
-  languages: ['Python', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'SASS', 'C', 'Swift', 'Shell'],
-  tools: [
-    'FastAPI',
-    'Flask',
-    'Pydantic',
-    'Dash',
-    'React',
-    'Next.js',
-    'Vite',
-    'WebPack',
-    'ParcelJS',
-    'PostgreSQL',
-    'MongoDB',
-    'SQLite',
-    'SQLAlchemy',
-    'Redis',
-    'Celery',
-    'Keycloak',
-    'LDAP',
-    'OAuth2',
-    'NGINX',
-    'Caddy',
-    'Docker',
-    'Docker Swarm',
-    'Git',
-    'CI/CD',
-    'AWS',
-    'Nextflow',
-    'Supabase',
-    'Vercel',
-  ],
-  ml: [
-    'Transformers',
-    'Hugging Face',
-    'Pandas',
-    'Scikit-learn',
-    'Feature Engineering',
-    'Model Training',
-  ],
-};
+export interface SkillGroup {
+  name: string;
+  use: string;
+  tools: string[];
+  /** Only set when a CV role date supports it. */
+  since?: number;
+  evidence: { what: string; where: string }[];
+}
+
+export const skills: SkillGroup[] = [
+  {
+    name: 'Backend and APIs',
+    use: 'Services and APIs behind scientific web apps.',
+    tools: ['FastAPI', 'Flask', 'Pydantic', 'SQLAlchemy', 'PostgreSQL', 'MongoDB', 'SQLite'],
+    since: 2023,
+    evidence: [
+      {
+        what: 'FastAPI + PostgreSQL backend with a Celery and Redis queue for async jobs.',
+        where: 'VSE Enterovirus Repository, Nostrum Biodiscovery',
+      },
+      {
+        what: 'Flask + Pydantic backend for a modular plugin architecture.',
+        where: 'Nostrum Suite plugins',
+      },
+      {
+        what: 'FastAPI, SQLModel/PostgreSQL, Redis and MinIO backend.',
+        where: 'tc-os, Temple Compute',
+      },
+    ],
+  },
+  {
+    name: 'Frontend',
+    use: 'Browser and offline desktop interfaces for simulations and data.',
+    tools: ['React', 'Next.js', 'TypeScript', 'Vite', 'WebPack', 'ParcelJS', 'HTML', 'CSS', 'SASS'],
+    since: 2023,
+    evidence: [
+      {
+        what: 'Next.js frontend for a bioinformatics platform.',
+        where: 'VSE Enterovirus Repository',
+      },
+      {
+        what: 'Vite + React + TypeScript UI to configure and run molecular simulations.',
+        where: 'Nostrum Suite plugins and WebApp',
+      },
+      {
+        what: 'Plugin repository portal for community plugin sharing.',
+        where: 'Horus Workflow Manager, BSC',
+      },
+    ],
+  },
+  {
+    name: 'Data and ML',
+    use: 'Prediction pipelines and tools for protein and immunology data.',
+    tools: ['Pandas', 'Scikit-learn', 'Transformers', 'Hugging Face', 'Feature Engineering'],
+    evidence: [
+      {
+        what: 'Immunogenicity predictor with Pandas and Transformers.',
+        where: 'PredIG, BSC',
+      },
+      {
+        what: 'Pipeline for feature extraction, selection, outlier detection and model training.',
+        where: 'aMLProt, BSC',
+      },
+      {
+        what: 'Local models for private medical report summaries.',
+        where: 'MedSum, personal project',
+      },
+    ],
+  },
+  {
+    name: 'Infra and DevOps',
+    use: 'Containers, deployment and pipelines for production apps.',
+    tools: [
+      'Docker',
+      'Docker Swarm',
+      'CI/CD',
+      'GitLab CI',
+      'NGINX',
+      'Caddy',
+      'AWS',
+      'Vercel',
+      'Git',
+    ],
+    since: 2023,
+    evidence: [
+      {
+        what: 'High-availability molecular dynamics database on AWS with MongoDB and Docker Swarm.',
+        where: 'MDPosit, BSC',
+      },
+      {
+        what: 'Self-hosted GitLab CI/CD for several concurrent projects.',
+        where: 'Nostrum Biodiscovery',
+      },
+      {
+        what: 'Caddy reverse proxy enforcing authentication.',
+        where: 'Horus auth integration, BSC',
+      },
+    ],
+  },
+  {
+    name: 'Auth and security',
+    use: 'Single sign-on and access control for internal and external users.',
+    tools: ['Keycloak', 'LDAP', 'OAuth2', 'oauth2-proxy'],
+    since: 2023,
+    evidence: [
+      {
+        what: 'LDAP as source of truth, Keycloak as OIDC/OAuth2 provider, oauth2-proxy and Caddy in front, custom user provisioning.',
+        where: 'Horus-OpenAuth-LDAP Integration, BSC',
+      },
+      {
+        what: 'Keycloak authentication in a full-stack platform.',
+        where: 'VSE Enterovirus Repository',
+      },
+    ],
+  },
+  {
+    name: 'Scientific computing and HPC',
+    use: 'Workflows, simulations and automation on clusters.',
+    tools: ['Nextflow', 'SLURM', 'Bash', 'OpenMPI', 'Workflow orchestration'],
+    since: 2021,
+    evidence: [
+      {
+        what: 'Job submission and post-processing scripts on HPC clusters.',
+        where: 'Researcher, Universitat Autonoma de Barcelona',
+      },
+      {
+        what: 'Core workflow engine and plugin ecosystem for HPC workflows.',
+        where: 'Horus, BSC and Temple Compute',
+      },
+      {
+        what: 'Nextflow pipeline orchestration.',
+        where: 'VSE Enterovirus Repository',
+      },
+    ],
+  },
+  {
+    name: 'Languages',
+    use: 'Python for most work, TypeScript for the web, C and Swift on the side.',
+    tools: ['Python', 'TypeScript', 'JavaScript', 'C', 'Swift', 'Shell'],
+    since: 2021,
+    evidence: [
+      {
+        what: 'Python and Bash automation for HPC jobs, from my first research role.',
+        where: 'Universitat Autonoma de Barcelona, 2021',
+      },
+      {
+        what: 'Monte Carlo simulations in C; Swift and SwiftUI apps for macOS, iPadOS and iOS.',
+        where: 'MC Simulations, Atomic Molecular Visualizer, Charted!',
+      },
+    ],
+  },
+];
 
 export const spoken = [
   { lang: 'Spanish · Catalan', level: 'Native' },
