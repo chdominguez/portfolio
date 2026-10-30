@@ -14,12 +14,13 @@ export function Hero() {
     const s = stage(viewport);
     const reveal = 1 - Math.pow(1 - world.reveal, 3);
     const t = clock.elapsedTime;
-    outer.current.visible = world.mol > 0.01;
+    const vis = world.mol * (1 - world.gap);
+    outer.current.visible = vis > 0.01;
     outer.current.position.set(s.x, s.y, 0);
-    outer.current.scale.setScalar(s.scale * reveal * world.mol);
+    outer.current.scale.setScalar(s.scale * reveal * vis);
     outer.current.rotation.set(pointer.y * 0.15, pointer.x * 0.15, 0);
     pool.center.copy(outer.current.position);
-    pool.scale = s.scale * reveal;
+    pool.scale = s.scale * reveal * vis;
     mols.current.forEach((m, k) => {
       if (!m) return;
       m.rotation.set(TILT[k][0] + t * 0.35, TILT[k][1] + t * 0.27, TILT[k][2] + t * 0.18);

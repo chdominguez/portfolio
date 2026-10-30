@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
 /** A pool of five water molecules; the one in slot 0 is ejected and crashes into the title. */
-export const POOL_SCALE = 1.5;
-const RADIUS = 2.7;
+export const POOL_SCALE = 1.0;
+const RADIUS = 1.9;
 
 export const SLOTS: THREE.Vector3[] = Array.from({ length: 5 }, (_, k) => {
   const a = Math.PI * 0.85 + (k / 5) * Math.PI * 2;

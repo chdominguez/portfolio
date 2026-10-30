@@ -5,7 +5,7 @@ import { initStory } from './engine/story';
 import { chapters } from './content/story';
 import { profile } from './content/cv';
 import { Chapter } from './ui/Chapter';
-import { Contact, Papers, Skills, Work } from './ui/Index';
+import { About, Contact, Papers, Skills, Work } from './ui/Index';
 
 // The 3D stack loads after first paint, so the text is readable immediately.
 const Stage = lazy(() => import('./scene/Stage'));
@@ -34,6 +34,7 @@ export function App() {
           {profile.name}
         </a>
         <span>
+          <a href="#about">About</a>
           <a href="#work">Work</a>
           <a href="#skills">Skills</a>
           <a href="#papers">Papers</a>
@@ -63,6 +64,7 @@ export function App() {
             </a>
           </div>
         </header>
+        <About />
         {chapters.map((c) => (
           <Chapter key={c.id} c={c} />
         ))}

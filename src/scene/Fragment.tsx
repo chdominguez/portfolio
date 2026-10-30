@@ -39,7 +39,7 @@ export function Fragment() {
     const g = group.current;
     // it starts in its slot in the pool, then is ejected toward the title
     from.copy(SLOTS[0]).multiplyScalar(pool.scale).add(pool.center);
-    g.visible = world.mol > 0.01 && t < 0.7;
+    g.visible = pool.scale > 0.01 && t < 0.7;
     g.position.set(
       from.x + (tgt.x - from.x) * u,
       from.y + (tgt.y - from.y) * u + Math.sin(Math.PI * fly) * 1.4,

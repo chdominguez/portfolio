@@ -32,6 +32,19 @@ export function initStory() {
     const codeEl = document.querySelector<HTMLElement>('#code');
     const term = codeEl ? initTerminal(codeEl) : null; // #code terminal: bots eat, text is hacked in
 
+    // the pool steps aside while About is on screen, then returns for the Molecules chapter
+    ScrollTrigger.create({
+      trigger: '#about',
+      start: 'top 85%',
+      end: 'bottom 15%',
+      onUpdate: (self) => {
+        const q = self.progress;
+        world.gap = clamp(Math.min(q / 0.2, (1 - q) / 0.2));
+      },
+      onLeave: () => (world.gap = 0),
+      onLeaveBack: () => (world.gap = 0),
+    });
+
     chapters.forEach((el, i) => {
       const steps = Array.from(el.querySelectorAll<HTMLElement>('.step'));
       let current = -1;

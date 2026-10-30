@@ -23,8 +23,9 @@ export function Chapter({ c }: { c: ChapterData }) {
           <p className="lede">{c.lede}</p>
         </div>
         <ol className="steps">
-          {c.steps.map((s) => (
-            <li key={s.title + s.period} className="step">
+          {c.steps.map((s, i) => (
+            // the first step starts active so the panel is never an empty box before scroll takes over
+            <li key={s.title + s.period} className={i === 0 ? 'step is-active' : 'step'}>
               {c.id === 'code' && (
                 <p className="prompt" aria-hidden="true">
                   $ cat roles/{slug(s.title)}.md

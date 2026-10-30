@@ -1,5 +1,49 @@
 import { profile, projects, publications, skills, spoken } from '../content/cv';
 
+export function About() {
+  return (
+    <section id="about" className="about" aria-labelledby="about-title">
+      <img
+        src="/christian.webp"
+        width="519"
+        height="640"
+        alt="Christian Domínguez"
+        loading="lazy"
+        decoding="async"
+      />
+      <div>
+        <h2 id="about-title">Hi, I'm Christian.</h2>
+        <p className="about-lead">
+          I run Temple Compute and write the software behind it. Since 2023 I have built production
+          platforms for scientists at Barcelona Supercomputing Center and Nostrum Biodiscovery,
+          after a chemistry degree and research in quantum chemistry.
+        </p>
+        <dl>
+          <div>
+            <dt>Now</dt>
+            <dd>CEO and CTO, Temple Compute. Building Horus, a workflow runtime for HPC.</dd>
+          </div>
+          <div>
+            <dt>Strongest at</dt>
+            <dd>
+              Python backends (FastAPI, Flask), React and TypeScript, Docker, CI/CD, auth with
+              Keycloak and OAuth2.
+            </dd>
+          </div>
+          <div>
+            <dt>Domains</dt>
+            <dd>HPC, bioinformatics, molecular dynamics, machine learning pipelines.</dd>
+          </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>Barcelona. Spanish and Catalan native, English C1.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 export function Work() {
   const [lead, ...rest] = projects;
   return (

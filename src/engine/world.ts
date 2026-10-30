@@ -7,6 +7,8 @@ export const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 export interface World {
   /** hero molecule presence, 1 until the Code chapter starts */
   mol: number;
+  /** 1 while the About section is in view: the pool steps aside */
+  gap: number;
   /** fragment flight + burst, 0..1 */
   impact: number;
   /** screen px of the title the fragment hits */
@@ -26,6 +28,7 @@ export interface World {
 
 export const world: World = {
   mol: 1,
+  gap: 0,
   impact: 0,
   target: { x: 0, y: 0 },
   snake: 0,
