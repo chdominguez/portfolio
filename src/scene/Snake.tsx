@@ -1,42 +1,68 @@
-import { useMemo, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useEffect, useMemo, useRef } from 'react';
+import { useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import { world } from '../engine/world';
 import { C } from './palette';
 
-const SEGMENTS = 34;
-const GAP = 0.02;
+const LENGTH = 3.6;
+const TINT: Record<string, THREE.Color> = {
+  DarkGreen: new THREE.Color('#2F6B55'),
+  LightGreen: C.accent,
+  Red: C.oxygen,
+  Teeth: C.text,
+  Purple: C.dim,
+  Yellow: new THREE.Color('#E6C75A'),
+  DarkRed: new THREE.Color('#9C4F43'),
+};
 
-/** The Python snake crosses the screen in the Code chapter, low enough to leave the text clear. */
+/**
+ * Python. Rigged low-poly snake by Quaternius (CC0, poly.pizza), recoloured to the page palette.
+ * It slithers across the lower part of the screen during the Code chapter.
+ */
 export function Snake() {
-  const segs = useRef<(THREE.Mesh | null)[]>([]);
-  const colors = useMemo(
-    () => Array.from({ length: SEGMENTS }, (_, i) => C.accent.clone().lerp(C.dim, i / SEGMENTS)),
-    []
-  );
+  const gltf = useLoader(GLTFLoader, '/models/snake.glb');
+  const root = useRef<THREE.Group>(null!);
+  const model = useMemo(() => clone(gltf.scene), [gltf]);
+  const mixer = useMemo(() => new THREE.AnimationMixer(model), [model]);
+  // the armature is scaled x100 and the mesh is ~0.03 long, so the model is ~3 units as exported
+  const fit = LENGTH / 3;
 
-  useFrame(({ viewport, clock }) => {
-    const y0 = -viewport.height * 0.3;
-    const h = world.snake * (1 + SEGMENTS * GAP);
-    segs.current.forEach((m, i) => {
-      if (!m) return;
-      const s = h - i * GAP;
-      m.visible = s > 0 && s < 1;
-      if (!m.visible) return;
-      const x = viewport.width / 2 + 1 - s * (viewport.width + 2);
-      m.position.set(x, y0 + Math.sin(s * 20 - clock.elapsedTime * 3) * 0.5, 0.6);
-      m.scale.setScalar(i === 0 ? 1.4 : 1 - (i / SEGMENTS) * 0.5);
+  useEffect(() => {
+    model.traverse((o) => {
+      const mesh = o as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      const m = (mesh.material as THREE.MeshStandardMaterial).clone();
+      m.color = (TINT[m.name] ?? C.muted).clone();
+      m.roughness = 0.55;
+      m.metalness = 0;
+      mesh.material = m;
     });
+    const walk = gltf.animations.find((a) => a.name.endsWith('Snake_Walk')) ?? gltf.animations[0];
+    if (walk) mixer.clipAction(walk, model).play();
+    return () => {
+      mixer.stopAllAction();
+    };
+  }, [gltf, model, mixer]);
+
+  useFrame(({ viewport, clock }, dt) => {
+    const t = world.snake;
+    const g = root.current;
+    g.visible = t > 0.005 && t < 0.995;
+    if (!g.visible) return;
+    mixer.update(dt * 1.2);
+    // enters from the right, leaves on the left, weaving a little on the way
+    const x = viewport.width / 2 + LENGTH - t * (viewport.width + LENGTH * 2);
+    g.position.set(x, -viewport.height * 0.24 + Math.sin(clock.elapsedTime * 1.3) * 0.12, 0.6);
+    // model lies along its local Y: roll it flat, head toward the direction of travel (left)
+    g.rotation.set(0.25, Math.sin(clock.elapsedTime * 1.7) * 0.15, Math.PI / 2);
+    g.scale.setScalar(fit);
   });
 
   return (
-    <>
-      {colors.map((c, i) => (
-        <mesh key={i} ref={(m) => (segs.current[i] = m)} visible={false}>
-          <sphereGeometry args={[0.2, 18, 18]} />
-          <meshStandardMaterial color={c} roughness={0.4} />
-        </mesh>
-      ))}
-    </>
+    <group ref={root} visible={false}>
+      <primitive object={model} />
+    </group>
   );
 }

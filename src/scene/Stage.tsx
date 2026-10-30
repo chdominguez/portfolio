@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import { renderHook } from '../engine/clock';
 import { world } from '../engine/world';
 import { Fragment } from './Fragment';
-import { Particles } from './Particles';
+import { Hero } from './Hero';
+import { Racks } from './Racks';
 import { Snake } from './Snake';
 
 /** One fixed, click-through canvas. Rendering is driven by the shared ticker (frameloop never). */
@@ -43,9 +44,12 @@ export default function Stage() {
       <ambientLight intensity={0.9} />
       <directionalLight position={[4, 6, 8]} intensity={2.4} />
       <directionalLight position={[-6, -2, -4]} intensity={0.8} color="#7FD6B0" />
-      <Particles origin={origin} />
+      <Hero origin={origin} />
       <Fragment origin={origin} />
-      <Snake />
+      <Suspense fallback={null}>
+        <Snake />
+      </Suspense>
+      <Racks />
     </Canvas>
   );
 }

@@ -2,22 +2,28 @@ import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { clamp, world } from '../engine/world';
+import { BallStick, water } from './Molecule';
 import { C } from './palette';
 import { toWorld } from './space';
 
-const BURST = 26;
+const SHARDS = 28;
 
-/** A water-like fragment leaves the molecule, hits the "Molecules" title and bursts. */
+/** A water molecule leaves the benzene, hits the "Molecules" title and shatters into shards. */
 export function Fragment({ origin }: { origin: THREE.Vector3 }) {
   const group = useRef<THREE.Group>(null!);
-  const burst = useRef<THREE.InstancedMesh>(null!);
+  const shards = useRef<THREE.InstancedMesh>(null!);
   const o = useMemo(() => new THREE.Object3D(), []);
   const dirs = useMemo(
     () =>
-      Array.from({ length: BURST }, (_, i) => {
-        const a = (i / BURST) * Math.PI * 2 + Math.sin(i * 7.1);
+      Array.from({ length: SHARDS }, (_, i) => {
+        const a = (i / SHARDS) * Math.PI * 2 + Math.sin(i * 7.1);
         const s = 0.6 + ((i * 37) % 10) / 10;
-        return { x: Math.cos(a) * s, y: Math.sin(a) * s, z: Math.sin(i * 3.7) * s * 0.5 };
+        return {
+          x: Math.cos(a) * s,
+          y: Math.sin(a) * s,
+          z: Math.sin(i * 3.7) * s * 0.5,
+          r: i * 1.3,
+        };
       }),
     []
   );
@@ -34,42 +40,35 @@ export function Fragment({ origin }: { origin: THREE.Vector3 }) {
       origin.y + (tgt.y - origin.y) * u + Math.sin(Math.PI * fly) * 1.4,
       0.8
     );
-    g.rotation.set(t * 18, t * 24, 0);
+    g.rotation.set(t * 10, t * 14, t * 6);
+    g.scale.setScalar(0.9);
 
     const age = clamp((t - 0.7) / 0.3);
-    burst.current.visible = age > 0 && age < 1;
-    if (!burst.current.visible) return;
+    shards.current.visible = age > 0 && age < 1;
+    if (!shards.current.visible) return;
     dirs.forEach((d, i) => {
-      const k = age * 3.2;
+      const k = age * 3.4;
       o.position.set(tgt.x + d.x * k, tgt.y + d.y * k, d.z * k);
-      o.scale.setScalar((1 - age) * 0.1);
+      o.rotation.set(d.r + age * 6, d.r * 0.7 + age * 4, 0);
+      o.scale.setScalar((1 - age) * 0.16);
       o.updateMatrix();
-      burst.current.setMatrixAt(i, o.matrix);
+      shards.current.setMatrixAt(i, o.matrix);
     });
-    burst.current.instanceMatrix.needsUpdate = true;
+    shards.current.instanceMatrix.needsUpdate = true;
   });
 
   return (
     <>
       <group ref={group} visible={false}>
-        <mesh>
-          <sphereGeometry args={[0.34, 20, 20]} />
-          <meshStandardMaterial color={C.oxygen} roughness={0.45} />
-        </mesh>
-        {[-1, 1].map((s) => (
-          <mesh key={s} position={[s * 0.5, 0.38, 0]}>
-            <sphereGeometry args={[0.2, 16, 16]} />
-            <meshStandardMaterial color={C.text} roughness={0.45} />
-          </mesh>
-        ))}
+        <BallStick def={water} />
       </group>
       <instancedMesh
-        ref={burst}
-        args={[undefined, undefined, BURST]}
+        ref={shards}
+        args={[undefined, undefined, SHARDS]}
         frustumCulled={false}
         visible={false}
       >
-        <sphereGeometry args={[1, 10, 10]} />
+        <boxGeometry args={[1, 1, 1]} />
         <meshBasicMaterial color={C.accent} />
       </instancedMesh>
     </>
